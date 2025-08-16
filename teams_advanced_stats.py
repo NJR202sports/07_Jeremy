@@ -2,7 +2,7 @@
 # 球隊進階數據 Advanced Stats
 import urllib.request as req
 import os
-import bs4 as bs
+from bs4 import BeautifulSoup as bs
 import pandas as pd
 
 def get_table(url):
