@@ -1,12 +1,12 @@
 import urllib.request as req
 import os
-import bs4 as bs
+from bs4 import BeautifulSoup as bs
 import pandas as pd
 
 def get_table(url):
     resp = req.urlopen(url)
     content = resp.read()
-    html = bs.BeautifulSoup(content)
+    html = bs(content, 'html.parser')
 
     table = html.find("tbody")
     rows = table.find_all("tr")

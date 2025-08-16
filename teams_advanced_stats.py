@@ -8,7 +8,7 @@ import pandas as pd
 def get_table(url):
     resp = req.urlopen(url)
     content = resp.read()
-    html = bs.BeautifulSoup(content)
+    html = bs.BeautifulSoup(content,'html.parser')
 
     table = html.find("div", {"id": "all_advanced_team"}).find("tbody")
     rows = table.find_all("tr")
