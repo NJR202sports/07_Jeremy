@@ -9,6 +9,7 @@ Description: NBA salary data from www.hoopshype.com
 import requests 
 from bs4 import BeautifulSoup as bs
 import pandas as pd
+import os
 
 def team_season_salary(team_name, year, url_num):
 
@@ -122,8 +123,10 @@ if __name__ == '__main__':
     # 根據 "teams" 的值取得排序順序
     # df_sorted = df.sort_values(by='team', ignore_index=True)
 
-    # save
-    df.to_csv('nba_players_salary.csv', index=False)
-    # with open('salary.json', 'w', encoding='utf-8') as f:
-    #     json.dump(row, f, indent=4, ensure_ascii=False)
+    dirname = "nba_players_salary"
+    if not os.path.exists(dirname):
+        os.mkdir(dirname)
 
+    # save
+    fn = os.path.join(dirname, 'nba_players_salary.csv')
+    df.to_csv(fn, index=False, encoding='utf-8-sig')
