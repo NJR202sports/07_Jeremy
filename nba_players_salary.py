@@ -70,7 +70,7 @@ if __name__ == '__main__':
         'IND': ['indiana-pacers', 11],
         'LAC': ['los-angeles-clippers', 12],
         'LAL': ['los-angeles-lakers', 13],
-        'MEM': ['memphis_grizzlies', 29],
+        'MEM': ['memphis-grizzlies', 29],
         'MIA': ['miami-heat', 14],
         'MIL': ['milwaukee-bucks', 15],
         'MIN': ['minnesota-timberwolves', 16],
