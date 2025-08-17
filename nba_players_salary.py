@@ -6,7 +6,7 @@ Last Update: 2025-08-02 15:22:51
 Description: NBA salary data from www.hoopshype.com
 """
 
-import urllib.request as req
+import requests 
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import time
@@ -23,14 +23,11 @@ def team_season_salary(team_name, year, url_num):
     # if not os.path.exists(dirname):
     #     os.makedirs(dirname)
 
-    # 取得網頁內容
-    r = req.Request(url)
-    r.add_header('user-agent',
-                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36')
+    h = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
 
     # 開啟網址並讀取html內容
-    resp = req.urlopen(r)
-    content = resp.read()
+    resp = requests.get(url, headers=h)
+    content = resp.text
     html = bs(content, 'html.parser')
 
 
@@ -47,7 +44,7 @@ def team_season_salary(team_name, year, url_num):
     salaryAll = html.find_all('td', {"class": "RLrCiX__RLrCiX"})
     salary_list = []
     for salary in salaryAll:
-        salary_list.append(int(salary.text.strip()[1:].replace(',', '')))
+        salary_list.append(salary.text.strip()[1:].replace(',', ''))
     salary_list = salary_list[:-len(year_items)][::len(year_items)]
 
     return player_list, salary_list
@@ -118,7 +115,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f"發生錯誤於 {team_name} {year}：{e}")
 
-            time.sleep(random.uniform(3, 5))  # 輕微延遲，避免封鎖
+            # time.sleep(random.uniform(3, 5))  # 輕微延遲，避免封鎖
 
 
 
