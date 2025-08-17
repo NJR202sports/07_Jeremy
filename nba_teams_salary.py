@@ -51,6 +51,10 @@ for col in all_years.columns:
     else:
         agg_dict[col] = lambda x: ", ".join(x.dropna().astype(str).unique())
 
+dirname = "nba_teams_salary"
+if not os.path.exists(dirname):
+        os.mkdir(dirname)
+
 # 使用 groupby 聚合
 grouped = all_years.groupby("Team").agg(agg_dict).reset_index(drop=True)
 
@@ -59,5 +63,5 @@ grouped.index = grouped.index + 1
 # team 欄移至第一欄
 team_col = grouped.pop("Team")
 grouped.insert(0, "Team", team_col)
-
-grouped.to_csv("nba_teams_salary.csv", index=True)
+fn = os.path.join(dirname, 'nba_teams_salary.csv')
+grouped.to_csv(fn, index=True)
