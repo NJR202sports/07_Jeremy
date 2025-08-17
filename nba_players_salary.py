@@ -9,9 +9,6 @@ Description: NBA salary data from www.hoopshype.com
 import requests 
 from bs4 import BeautifulSoup as bs
 import pandas as pd
-import time
-import random
-
 
 def team_season_salary(team_name, year, url_num):
 
