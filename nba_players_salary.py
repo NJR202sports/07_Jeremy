@@ -10,6 +10,8 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import os
+import time
+import random
 
 def team_season_salary(team_name, year, url_num):
 
@@ -113,7 +115,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f"發生錯誤於 {team_name} {year}：{e}")
 
-            # time.sleep(random.uniform(3, 5))  # 輕微延遲，避免封鎖
+            time.sleep(random.randint(1, 3))  # 輕微延遲，避免封鎖
 
 
 
