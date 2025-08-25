@@ -3,6 +3,7 @@
 import requests
 import pandas as pd
 import os
+import lxml
 
 # dirname = "nba_teams_salary"
 # if not os.path.exists(dirname):
