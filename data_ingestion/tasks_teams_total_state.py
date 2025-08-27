@@ -5,6 +5,9 @@ import os
 import bs4 as bs
 import pandas as pd
 
+from data_ingestion.worker import app
+
+@app.task()
 def get_table(url):
     resp = req.urlopen(url)
     content = resp.read()
@@ -108,15 +111,15 @@ def get_table(url):
 
 
 
-dirname = "nba_teams_state"
-if not os.path.exists(dirname):
-    os.mkdir(dirname)
+    dirname = "nba_teams_state"
+    if not os.path.exists(dirname):
+        os.mkdir(dirname)
 
-for i in range(2015,2026):
-   url = f"https://www.basketball-reference.com/leagues/NBA_{i}.html"
-   table = get_table(url)
+    for i in range(2015,2026):
+        url = f"https://www.basketball-reference.com/leagues/NBA_{i}.html"
+        table = get_table(url)
 
-   df = pd.DataFrame(table)
-   df.index += 1
-   fn = os.path.join(dirname, f"nba_teams_state_{i}.csv")
-   df.to_csv(fn, encoding="utf-8-sig")
+        df = pd.DataFrame(table)
+        df.index += 1
+        fn = os.path.join(dirname, f"nba_teams_state_{i}.csv")
+        df.to_csv(fn, encoding="utf-8-sig")

@@ -3,22 +3,22 @@
 import requests
 import pandas as pd
 import os
+import lxml
 
-# dirname = "nba_teams_salary"
-# if not os.path.exists(dirname):
-#     os.mkdir(dirname)
+
+dirname = "nba_teams_salary"
+if not os.path.exists(dirname):
+        os.mkdir(dirname)
 
 for year in range(2015, 2026):
     url = f"https://www.hoopshype.com/salaries/teams/?season={year}"
     response = requests.get(url)
 
-
     try:
-
         tables = pd.read_html(response.text)
         df = tables[0]
-        #fn = os.path.join(dirname)
-        df.to_csv(f"salary_{year}.csv", index=False)
+        fn = os.path.join(dirname, f"salary_{year}.csv")
+        df.to_csv(fn, index=False)
 
     except Exception as e:
         print(f"{year} 資料讀取失敗: {e}")
@@ -29,7 +29,8 @@ years = range(2015, 2026)
 dfs = []
 
 for year in years:
-    df = pd.read_csv(f"salary_{year}.csv")
+    fn = os.path.join(dirname, f"salary_{year}.csv")
+    df = pd.read_csv(fn)
     if "Team" in df.columns:
         df["Team"] = df["Team"].str.strip().str.lower()
     dfs.append(df)
@@ -51,9 +52,6 @@ for col in all_years.columns:
     else:
         agg_dict[col] = lambda x: ", ".join(x.dropna().astype(str).unique())
 
-dirname = "nba_teams_salary"
-if not os.path.exists(dirname):
-        os.mkdir(dirname)
 
 # 使用 groupby 聚合
 grouped = all_years.groupby("Team").agg(agg_dict).reset_index(drop=True)

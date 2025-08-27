@@ -2,133 +2,138 @@
 Filename:    scawler_salary.py
 Author:      Shin Yuan Huang
 Created:     2025-07-30 
-Last Update: 2025-08-02 15:22:51
 Description: NBA salary data from www.hoopshype.com
 """
 
-import requests 
-from bs4 import BeautifulSoup as bs
+import urllib.request as req
+import bs4 as bs
 import pandas as pd
 import os
 import time
 import random
 
-def team_season_salary(team_name, year, url_num):
 
-    url = f"https://www.hoopshype.com/salaries/teams/{team_name}/{url_num}/?season={year}"
-    # print(url)
-
-    # 儲存的路徑
-    # dirname = os.path.join('.', 'salary')
-    # if not os.path.exists(dirname):
-    #     os.makedirs(dirname)
-
-    h = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
-
-    # 開啟網址並讀取html內容
-    resp = requests.get(url, headers=h)
-    content = resp.text
-    html = bs(content, 'html.parser')
-
-
-    # players
-    players = html.find_all('td', {"class": "vTd-Ji__vTd-Ji"})
-    player_list = []
-    for player in players:
-        player_list.append(player.text)
-    player_list = player_list[:-1]
-    # player_list[-1] = 'total'
-
-    # salary
-    year_items = html.find_all('th', {"colspan": "1", "class": "RLrCiX__RLrCiX"})
-    salaryAll = html.find_all('td', {"class": "RLrCiX__RLrCiX"})
-    salary_list = []
-    for salary in salaryAll:
-        salary_list.append(salary.text.strip()[1:].replace(',', ''))
-    salary_list = salary_list[:-len(year_items)][::len(year_items)]
-
-    return player_list, salary_list
-
-
-if __name__ == '__main__':
+def nba_players_salary(year):
 
     team_inf = {
-        'ATL': ['atlanta-hawks', 1],
-        'BOS': ['boston-celtics', 2],
-        'BKN': ['brooklyn-nets', 17],
-        'CHA': ['charlotte-hornets', 5312],
-        'CHI': ['chicago-bulls', 4],
-        'CLE': ['cleveland-cavaliers', 5],
-        'DAL': ['dallas-mavericks', 6],
-        'DEN': ['denver-nuggets', 7],
-        'DET': ['detroit-pistons', 8],
-        'GSW': ['golden-state-warriors', 9],
-        'HOU': ['houston-rockets', 10],
-        'IND': ['indiana-pacers', 11],
-        'LAC': ['los-angeles-clippers', 12],
-        'LAL': ['los-angeles-lakers', 13],
-        'MEM': ['memphis-grizzlies', 29],
-        'MIA': ['miami-heat', 14],
-        'MIL': ['milwaukee-bucks', 15],
-        'MIN': ['minnesota-timberwolves', 16],
-        'NOP': ['new-orleans-pelicans', 3],
-        'NYK': ['new-york-knicks', 18],
-        'OKC': ['oklahoma-city-thunder', 25],
-        'ORL': ['orlando-magic', 19],
-        'PHI': ['philadelphia-76ers', 20],
-        'PHX': ['phoenix-suns', 21],
-        'POR': ['portland-trail-blazers', 22],
-        'SAC': ['sacramento-kings', 23],
-        'SAS': ['san-antonio-spurs', 24],
-        'TOR': ['toronto-raptors', 28],
-        'UTA': ['utah-jazz', 26],
-        'WAS': ['washington-wizards', 27]
+        'atlanta-hawks': [1],
+        'boston-celtics': [2],
+        'brooklyn-nets': [17],
+        'charlotte-hornets': [5312],
+        'chicago-bulls': [4],
+        'cleveland-cavaliers': [5],
+        'dallas-mavericks': [6],
+        'denver-nuggets': [7],
+        'detroit-pistons': [8],
+        'golden-state-warriors': [9],
+        'houston-rockets': [10],
+        'indiana-pacers': [11],
+        'los-angeles-clippers': [12],
+        'los-angeles-lakers': [13],
+        'memphis-grizzlies': [29],
+        'miami-heat': [14],
+        'milwaukee-bucks': [15],
+        'minnesota-timberwolves': [16],
+        'new-orleans-pelicans': [3],
+        'new-york-knicks': [18],
+        'oklahoma-city-thunder': [25],
+        'orlando-magic': [19],
+        'philadelphia-76ers': [20],
+        'phoenix-suns': [21],
+        'portland-trail-blazers': [22],
+        'sacramento-kings': [23],
+        'san-antonio-spurs': [24],
+        'toronto-raptors': [28],
+        'utah-jazz': [26],
+        'washington-wizards': [27]
     }
 
     all_rows = []
 
-    for year in range(2015, 2026):
+    for team_name, url_num in team_inf.items():
 
-        for _, team_num in team_inf.items():
+        url = f"https://www.hoopshype.com/salaries/teams/{team_name}/{url_num[0]}/?season={year}"
+        print(url)
 
-            team_name = team_num[0]
-            url_num = team_num[1]
+        # 儲存的路徑
+        # dirname = os.path.join('.', 'salary')
+        # if not os.path.exists(dirname):
+        #     os.makedirs(dirname)
 
-            # print(year, team_name)
+        # 取得網頁內容
+        r = req.Request(url)
+        r.add_header('user-agent',
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1')
 
-            player_list, salary_list = team_season_salary(team_name, year, url_num)
-
-            # 檢查 player / salary 數量一致
-            try:
-                if len(player_list) != len(salary_list):
-                    raise ValueError(
-                        f"[資料不一致] {year} 年 {team_name}：players={len(player_list)}, salaries={len(salary_list)}")
-
-                for i in range(len(player_list)):
-                    all_rows.append({
-                        'year': year,
-                        'team': team_name,
-                        'players': player_list[i],
-                        'salary': salary_list[i]
-                    })
-
-            except Exception as e:
-                print(f"發生錯誤於 {team_name} {year}：{e}")
-
-            time.sleep(random.randint(1, 3))  # 輕微延遲，避免封鎖
+        # 開啟網址並讀取html內容
+        resp = req.urlopen(r)
+        content = resp.read()
+        html = bs.BeautifulSoup(content)
 
 
+        # players
+        players = html.find_all('td', {"class": "vTd-Ji__vTd-Ji"})
+        player_list = []
+        for player in players:
+            player_list.append(player.text)
+        player_list = player_list[:-1]
+        # player_list[-1] = 'total'
 
-    df = pd.DataFrame(all_rows)
-    # print(df)
+        # salary
+        year_items = html.find_all('th', {"colspan": "1", "class": "RLrCiX__RLrCiX"})
+        salaryAll = html.find_all('td', {"class": "RLrCiX__RLrCiX"})
+        salary_list = []
+        for salary in salaryAll:
+            salary_list.append(int(salary.text.strip()[1:].replace(',', '')))
+        salary_list = salary_list[:-len(year_items)][::len(year_items)]
 
-    # 根據 "teams" 的值取得排序順序
-    # df_sorted = df.sort_values(by='team', ignore_index=True)
+
+        # 檢查 player / salary 數量一致
+        try:
+            if len(player_list) != len(salary_list):
+                raise ValueError(
+                    f"[資料不一致] {year} 年 {team_name}：players={len(player_list)}, salaries={len(salary_list)}")
+
+            for i in range(len(player_list)):
+                all_rows.append({
+                    'year': year,
+                    'team': team_name,
+                    'players': player_list[i],
+                    'salary': salary_list[i]
+                })
+
+        except Exception as e:
+            print(f"發生錯誤於 {team_name} {year}：{e}")
+
+        time.sleep(random.uniform(1, 3))  # 輕微延遲，避免封鎖
+
 
     dirname = "nba_players_salary"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
+    df = pd.DataFrame(all_rows)
+    df.index += 1
+    fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
+    # print(df)
+
+    # 根據 "teams" 的值取得排序順序
+    # df_sorted = df.sort_values(by='team', ignore_index=True)
+
     # save
-    fn = os.path.join(dirname, 'nba_players_salary.csv')
-    df.to_csv(fn, index=False, encoding='utf-8-sig')
+    df.to_csv(fn, encoding="utf-8-sig")
+    # with open('salary.json', 'w', encoding='utf-8') as f:
+    #     json.dump(row, f, indent=4, ensure_ascii=False)
+
+
+
+
+# if __name__ == '__main__':
+
+#     years = list(range(2015,2016))
+
+#     for year in years:
+
+#         player_year_salary(year)
+
+print(nba_players_salary(2015))

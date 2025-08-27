@@ -3,6 +3,9 @@ import os
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
+from data_ingestion.worker import app
+
+@app.task()
 def get_table(url):
     resp = req.urlopen(url)
     content = resp.read()

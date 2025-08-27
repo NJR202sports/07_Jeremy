@@ -5,6 +5,10 @@ import os
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
+
+from data_ingestion.worker import app
+
+@app.task()
 def get_table(url):
     resp = req.urlopen(url)
     content = resp.read()
@@ -127,10 +131,10 @@ if not os.path.exists(dirname):
     os.mkdir(dirname)
 
 for i in range(2015,2026):
-   url = f"https://www.basketball-reference.com/leagues/NBA_{i}.html"
-   table = get_table(url)
+    url = f"https://www.basketball-reference.com/leagues/NBA_{i}.html"
+    table = get_table(url)
 
-   df = pd.DataFrame(table)
-   df.index += 1
-   fn = os.path.join(dirname, f"nba_teams_Advancedstate_{i}.csv")
-   df.to_csv(fn, encoding="utf-8-sig")
+    df = pd.DataFrame(table)
+    df.index += 1
+    fn = os.path.join(dirname, f"nba_teams_Advancedstate_{i}.csv")
+    df.to_csv(fn, encoding="utf-8-sig")

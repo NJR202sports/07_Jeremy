@@ -1,0 +1,6 @@
+from data_ingestion.tasks_nba_player_state import get_table
+from data_ingestion.tasks_nba_players_salary import team_season_salary
+from data_ingestion.tasks_teams_advanced_stats import get_table
+from data_ingestion.tasks_teams_salary import get_teams_salary
+from data_ingestion.tasks_teams_total_state import get_table
+
