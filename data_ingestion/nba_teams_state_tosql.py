@@ -4,10 +4,8 @@ import urllib.request as req
 import os
 import bs4 as bs
 import pandas as pd
-from data_ingestion.worker_NBAcharts import app
+from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert ,nba_teams_state_table
 
-
-@app.task()
 def nba_teams_state(year:int):
 
     url = f"https://www.basketball-reference.com/leagues/NBA_{year}.html"
@@ -120,9 +118,13 @@ def nba_teams_state(year:int):
     df['team_cut'] = df["team"].str.split(' ')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
-    df.index += 1
-    fn = os.path.join(dirname, f"nba_teams_state_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
+    # df.index += 1
+    # fn = os.path.join(dirname, f"nba_teams_state_{year}.csv")
+    # df.to_csv(fn, encoding="utf-8-sig")
+
+    data = df.to_dict(orient='records') # 將 DataFrame 轉換為字典列表
+    upload_data_to_mysql_upsert(table_obj=nba_teams_state_table, data=data)
+    print(f"nba_teams_state_{year} has been uploaded to mysql.")
 
     return df
 

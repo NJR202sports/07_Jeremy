@@ -2,10 +2,8 @@ import urllib.request as req
 import os
 from bs4 import BeautifulSoup as bs
 import pandas as pd
-from data_ingestion.worker_NBAcharts import app
+from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_players_state_table
 
-
-@app.task()
 def nba_players_state(year:int):
 
     url = f"https://www.basketball-reference.com/leagues/NBA_{year}_totals.html"
@@ -133,19 +131,23 @@ def nba_players_state(year:int):
         os.mkdir(dirname)
 
     df = pd.DataFrame(players)
-    df.index += 1
-    fn = os.path.join(dirname, f"nba_players_state_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
+    # df.index += 1
+    # fn = os.path.join(dirname, f"nba_players_state_{year}.csv")
+    # df.to_csv(fn, encoding="utf-8-sig")
 
-    return df
+    data = df.to_dict(orient='records') # 將 DataFrame 轉換為字典列表
+    upload_data_to_mysql_upsert(table_obj=nba_players_state_table, data=data)
+    print(f"nba_players_state_{year} has been uploaded to mysql.")
+
+   
 
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2016))
+    years = list(range(2015,2021))
 
     for year in years:
 
         nba_players_state(year)
 
-# print(nba_player_state(2020))
+# print(nba_players_state(2020))

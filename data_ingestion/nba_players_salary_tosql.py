@@ -11,10 +11,8 @@ import pandas as pd
 import os
 import time
 import random
-from data_ingestion.worker_NBAcharts import app
+from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_players_salary_table
 
-
-@app.task()
 def nba_players_salary(year):
 
     team_inf = {
@@ -113,18 +111,22 @@ def nba_players_salary(year):
     df['team_cut'] = df["team"].str.split('-')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
-    df.index += 1
-    fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
+    # df.index += 1
+    # fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
+    # df.to_csv(fn, encoding="utf-8-sig")
     
-    return df
+    data = df.to_dict(orient='records') # 將 DataFrame 轉換為字典列表
+    upload_data_to_mysql_upsert(table_obj=nba_players_salary_table, data=data)
+    print(f"nba_players_salary_{year} has been uploaded to mysql.")
+
+   
 
 
 
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2016))
+    years = list(range(2015,2021))
 
     for year in years:
 

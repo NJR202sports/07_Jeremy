@@ -3,10 +3,8 @@
 import requests
 import pandas as pd
 import os
-from data_ingestion.worker_NBAcharts import app
+from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_teams_salary_table
 
-
-@app.task()
 def nba_teams_salary(year: int):
     dirname = "nba_teams_salary"
     if not os.path.exists(dirname):
@@ -23,9 +21,13 @@ def nba_teams_salary(year: int):
     df['total_salary'] = df['total_salary'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
     if year == 2025:
         df.drop(df.columns[3:6], axis=1, inplace=True)
-    df.index += 1
-    fn = os.path.join(dirname, f"team_salary_{year}.csv")
-    df.to_csv(fn, index=False)
+    
+    # fn = os.path.join(dirname, f"team_salary_{year}.csv")
+    # df.to_csv(fn, index=False)
+
+    data = df.to_dict(orient='records') # 將 DataFrame 轉換為字典列表
+    upload_data_to_mysql_upsert(table_obj=nba_teams_salary_table, data=data)
+    print(f"nba_teams_salary_{year} has been uploaded to mysql.")
 
     return df
 
