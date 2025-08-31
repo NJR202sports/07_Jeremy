@@ -116,9 +116,9 @@ def nba_teams_advancedstate(year:int):
                 "defensive_rebound_percentage": drb_pct,
                 "opponent_free_throws_per_field_goal_attempt": opp_ft_rate,
 
-                "球場": arena_name,
-                "總入場人數": attendance,
-                "平均每場比賽入場人數": attendance_per_g,
+                "arena_name": arena_name,
+                "attendance": attendance,
+                "attendance_per_g": attendance_per_g,
 
                 })
             team_seen.add(team)
@@ -129,6 +129,10 @@ def nba_teams_advancedstate(year:int):
 
 
     df = pd.DataFrame(teams)
+    df['team'] = df['team'].str.replace('*', '', regex=False)
+    df['team_cut'] = df["team"].str.split(' ')
+    df['team'] = df['team_cut'].str[-1]
+    df.drop(columns=['team_cut'], inplace=True)
     df.index += 1
     fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")

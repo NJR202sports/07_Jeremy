@@ -104,20 +104,17 @@ def nba_players_salary(year):
 
         time.sleep(random.uniform(1, 3))  # 輕微延遲，避免封鎖
 
-
+    # save
     dirname = "nba_players_salary"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
     df = pd.DataFrame(all_rows)
+    df['team_cut'] = df["team"].str.split('-')
+    df['team'] = df['team_cut'].str[-1]
+    df.drop(columns=['team_cut'], inplace=True)
     df.index += 1
     fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
-    # print(df)
-
-    # 根據 "teams" 的值取得排序順序
-    # df_sorted = df.sort_values(by='team', ignore_index=True)
-
-    # save
     df.to_csv(fn, encoding="utf-8-sig")
     
     return df

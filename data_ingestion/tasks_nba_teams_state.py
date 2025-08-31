@@ -116,6 +116,10 @@ def nba_teams_state(year:int):
         os.mkdir(dirname)
 
     df = pd.DataFrame(teams)
+    df['team'] = df['team'].str.replace('*', '', regex=False)
+    df['team_cut'] = df["team"].str.split(' ')
+    df['team'] = df['team_cut'].str[-1]
+    df.drop(columns=['team_cut'], inplace=True)
     df.index += 1
     fn = os.path.join(dirname, f"nba_teams_state_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")

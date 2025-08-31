@@ -23,7 +23,7 @@ def nba_teams_salary(year: int):
     df['total_salary'] = df['total_salary'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
     if year == 2025:
         df.drop(df.columns[3:6], axis=1, inplace=True)
-    
+    df.index += 1
     fn = os.path.join(dirname, f"team_salary_{year}.csv")
     df.to_csv(fn, index=False)
 
