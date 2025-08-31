@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
-def nba_player_state(year:int):
+def nba_players_state(year:int):
 
     url = f"https://www.basketball-reference.com/leagues/NBA_{year}_totals.html"
 
@@ -143,6 +143,6 @@ if __name__ == '__main__':
 
     for year in years:
 
-        nba_player_state(year)
+        nba_players_state(year)
 
-# print(nba_player_state(2020))
+# print(nba_players_state(2020))

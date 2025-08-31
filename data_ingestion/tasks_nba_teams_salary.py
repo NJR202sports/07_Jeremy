@@ -1,0 +1,40 @@
+#儲存2015-2025球隊薪資表格
+
+import requests
+import pandas as pd
+import os
+from data_ingestion.worker import app
+
+
+@app.task()
+def nba_teams_salary(year: int):
+    dirname = "nba_teams_salary"
+    if not os.path.exists(dirname):
+        os.mkdir(dirname)
+
+    url = f'https://www.hoopshype.com/salaries/teams/?season={year}'
+    response = requests.get(url)
+    tables = pd.read_html(response.text)
+    df = tables[0]
+    df.rename(columns={df.columns[0]: 'years'}, inplace=True)
+    df.rename(columns={df.columns[1]: 'team'}, inplace=True)
+    df.rename(columns={df.columns[2]: 'total_salary'}, inplace=True)
+    df['years'] = year 
+    df['total_salary'] = df['total_salary'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
+    if year == 2025:
+        df.drop(df.columns[3:6], axis=1, inplace=True)
+    
+    fn = os.path.join(dirname, f"team_salary_{year}.csv")
+    df.to_csv(fn, index=False)
+
+    return df
+
+if __name__ == '__main__':
+
+    years = list(range(2015,2016))
+
+    for year in years:
+
+        nba_teams_salary(year)
+
+# print(nba_teams_salary(2001))
