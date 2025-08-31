@@ -55,11 +55,6 @@ def nba_players_salary(year):
         url = f"https://www.hoopshype.com/salaries/teams/{team_name}/{url_num[0]}/?season={year}"
         print(url)
 
-        # 儲存的路徑
-        # dirname = os.path.join('.', 'salary')
-        # if not os.path.exists(dirname):
-        #     os.makedirs(dirname)
-
         # 取得網頁內容
         r = req.Request(url)
         r.add_header('user-agent',
@@ -96,9 +91,9 @@ def nba_players_salary(year):
 
             for i in range(len(player_list)):
                 all_rows.append({
-                    'year': year,
-                    'team': team_name,
+                    'year': year,                    
                     'players': player_list[i],
+                    'team': team_name,
                     'salary': salary_list[i]
                 })
 
@@ -122,18 +117,18 @@ def nba_players_salary(year):
 
     # save
     df.to_csv(fn, encoding="utf-8-sig")
-    # with open('salary.json', 'w', encoding='utf-8') as f:
-    #     json.dump(row, f, indent=4, ensure_ascii=False)
+    
+    return df
 
 
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     years = list(range(2015,2016))
+    years = list(range(2015,2016))
 
-#     for year in years:
+    for year in years:
 
-#         player_year_salary(year)
+        nba_players_salary(year)
 
-print(nba_players_salary(2015))
+# print(nba_players_salary(2018))

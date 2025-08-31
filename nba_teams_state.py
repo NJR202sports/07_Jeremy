@@ -79,6 +79,7 @@ def nba_teams_state(year:int):
 
         if team not in team_seen:
             teams.append({
+                "year": year,
                 "team": team,
                 "games": g,
                 "minutes_played": mp,
@@ -116,6 +117,14 @@ def nba_teams_state(year:int):
     fn = os.path.join(dirname, f"nba_teams_state_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")
 
+    return df
 
+if __name__ == '__main__':
 
-print(nba_teams_state(2023))
+    years = list(range(2015,2016))
+
+    for year in years:
+
+        nba_teams_state(year)
+
+# print(nba_teams_state(2023))

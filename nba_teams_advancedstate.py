@@ -87,6 +87,7 @@ def nba_teams_advancedstate(year:int):
 
         if team not in team_seen:
             teams.append({
+                "year": year,
                 "team": team,
                 "average_age": age,
                 "wins": wins,
@@ -130,5 +131,14 @@ def nba_teams_advancedstate(year:int):
     fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")
 
+    return df
 
-print(nba_teams_advancedstate(2023))    
+if __name__ == '__main__':
+
+    years = list(range(2015,2016))
+
+    for year in years:
+
+        nba_teams_advancedstate(year)
+
+# print(nba_teams_advancedstate(2022))    
