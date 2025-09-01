@@ -130,6 +130,7 @@ def nba_players_state(year:int):
         os.mkdir(dirname)
 
     df = pd.DataFrame(players)
+    df.replace("None", 0) # 將資料中的所有0換為5
     df.index += 1
     fn = os.path.join(dirname, f"nba_players_state_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")
@@ -139,7 +140,7 @@ def nba_players_state(year:int):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2016))
+    years = list(range(2016,2017))
 
     for year in years:
 

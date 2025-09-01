@@ -91,7 +91,7 @@ def nba_players_state(year:int):
         if name not in names_seen:
             players.append({
                 "year": year,
-                "name": name,
+                "player": name,
                 "team": team,
                 "age": age,
                 "pos": pos,
@@ -108,7 +108,6 @@ def nba_players_state(year:int):
                 "2p_field_goals_attempts": pa2,
                 "2p_field_goals_percentage": p2_pct,
                 "efg_pct": efg_pct,
-                "e_fga_pct": e_fga_pct,
                 "free_throws": ft,
                 "free_throws_attempts": fta,
                 "free_throws_percentage": ft_pct,
@@ -126,9 +125,9 @@ def nba_players_state(year:int):
         
         # return players
 
-    dirname = "nba_players_state"
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    # dirname = "nba_players_state"
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
 
     df = pd.DataFrame(players)
     # df.index += 1
