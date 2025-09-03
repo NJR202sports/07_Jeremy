@@ -80,7 +80,7 @@ def nba_players_salary(year):
         salaryAll = html.find_all('td', {"class": "RLrCiX__RLrCiX"})
         salary_list = []
         for salary in salaryAll:
-            salary_list.append(int(salary.text.strip()[1:].replace(',', '')))
+            salary_list.append(salary.text.strip()[1:].replace(',', ''))
         salary_list = salary_list[:-len(year_items)][::len(year_items)]
 
 

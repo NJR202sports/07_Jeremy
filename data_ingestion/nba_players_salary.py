@@ -79,7 +79,7 @@ def nba_players_salary(year):
         salaryAll = html.find_all('td', {"class": "RLrCiX__RLrCiX"})
         salary_list = []
         for salary in salaryAll:
-            salary_list.append(int(salary.text.strip()[1:].replace(',', '')))
+            salary_list.append(salary.text.strip()[1:].replace(',', ''))
         salary_list = salary_list[:-len(year_items)][::len(year_items)]
 
 
@@ -122,7 +122,7 @@ def nba_players_salary(year):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2016))
+    years = list(range(2025,2026))
 
     for year in years:
 
