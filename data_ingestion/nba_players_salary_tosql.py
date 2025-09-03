@@ -11,6 +11,7 @@ import pandas as pd
 import os
 import time
 import random
+import lxml
 from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_players_salary_table
 
 def nba_players_salary(year):
@@ -100,7 +101,7 @@ def nba_players_salary(year):
         except Exception as e:
             print(f"發生錯誤於 {team_name} {year}：{e}")
 
-        time.sleep(random.uniform(1, 3))  # 輕微延遲，避免封鎖
+        time.sleep(random.uniform(3, 5))  # 輕微延遲，避免封鎖
 
     # save
     dirname = "nba_players_salary"
@@ -126,7 +127,7 @@ def nba_players_salary(year):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2021))
+    years = list(range(2021,2026))
 
     for year in years:
 

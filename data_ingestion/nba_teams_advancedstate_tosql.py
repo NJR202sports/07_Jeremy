@@ -128,10 +128,13 @@ def nba_teams_advancedstate(year:int):
 
 
     df = pd.DataFrame(teams)
+    df.replace('', 0,  inplace=True)  # 將空字串補成 0，以利轉換資料型態
     df['team'] = df['team'].str.replace('*', '', regex=False)
     df['team_cut'] = df["team"].str.split(' ')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
+    df['attendance'] = df['attendance'].str.replace(',', '', regex=False)
+    df['attendance_per_g'] = df['attendance_per_g'].str.replace(',', '', regex=False)
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")
@@ -144,7 +147,7 @@ def nba_teams_advancedstate(year:int):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2021))
+    years = list(range(2015,2026))
 
     for year in years:
 

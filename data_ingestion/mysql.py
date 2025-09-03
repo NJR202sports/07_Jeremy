@@ -74,7 +74,6 @@ nba_teams_state_table = Table(
     Column("2p_field_goals", Integer, nullable=True, comment="兩分球命中數"),
     Column("2p_field_goals_attempts", Integer, nullable=True, comment="兩分球出手次數"),
     Column("2p_field_goals_percentage", Float, nullable=True, comment="兩分球命中率"),
-    Column("efg_pct", Float, nullable=True, comment="有效投籃命中率，增加三分球價值"),
     Column("free_throws", Float, nullable=True, comment="罰球命中數"),
     Column("free_throws_attempts", Float, nullable=True, comment="罰球出手次數"),
     Column("free_throws_percentage", Float, nullable=True, comment="罰球命中率"),

@@ -130,7 +130,7 @@ def nba_teams_state(year:int):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2016))
+    years = list(range(2015,2026))
 
     for year in years:
 

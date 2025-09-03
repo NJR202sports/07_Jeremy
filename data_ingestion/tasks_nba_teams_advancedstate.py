@@ -133,6 +133,8 @@ def nba_teams_advancedstate(year:int):
     df['team_cut'] = df["team"].str.split(' ')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
+    df['attendance'] = df['attendance'].str.replace(',', '', regex=False)
+    df['attendance_per_g'] = df['attendance_per_g'].str.replace(',', '', regex=False)
     df.index += 1
     fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")

@@ -2,6 +2,7 @@ import urllib.request as req
 import os
 from bs4 import BeautifulSoup as bs
 import pandas as pd
+import numpy as np
 from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_players_state_table
 
 def nba_players_state(year:int):
@@ -130,6 +131,42 @@ def nba_players_state(year:int):
     #     os.mkdir(dirname)
 
     df = pd.DataFrame(players)
+    df.replace('', 0,  inplace=True)  # 將空字串補成 0，以利轉換資料型態
+    # df = df.astype({
+    #     'year': 'Int64',
+    #     'player': 'string',
+    #     'team': 'string',
+    #     'age': 'Int64',
+    #     'pos': 'string',
+    #     'games': 'Int64',
+    #     'games_started': 'Int64',
+    #     'minutes_played': 'Int64',
+    #     'field_goals': 'Int64',
+    #     'field_goals_attempts': 'Int64',
+    #     'field_goals_percentage': 'float',
+    #     '3p_field_goals': 'Int64',
+    #     '3p_field_goals_attempts': 'Int64',
+    #     '3p_field_goals_percentage': 'float64',
+    #     '2p_field_goals': 'Int64',
+    #     '2p_field_goals_attempts': 'Int64',
+    #     '2p_field_goals_percentage': 'float',
+    #     'efg_pct': 'float',
+    #     'free_throws': 'Int64',
+    #     'free_throws_attempts': 'Int64',
+    #     'free_throws_percentage': 'float',
+    #     'offensive_rebounds': 'Int64',
+    #     'defensive_rebounds': 'Int64',
+    #     'total_rebounds': 'Int64',
+    #     'assists': 'Int64',
+    #     'steals': 'Int64',
+    #     'blocks': 'Int64',
+    #     'turnovers': 'Int64',
+    #     'personal_fouls': 'Int64',
+    #     'points': 'Int64'
+    #     })
+
+
+    df.drop(df.index[-1], inplace=True) # 移除最後一列平均值
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_players_state_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")
@@ -143,7 +180,7 @@ def nba_players_state(year:int):
 
 if __name__ == '__main__':
 
-    years = list(range(2015,2021))
+    years = list(range(2015,2026))
 
     for year in years:
 
