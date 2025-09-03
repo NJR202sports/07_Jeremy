@@ -1,0 +1,25 @@
+[2025-09-02T21:16:28.497+0800] INFO - local_task_job_runner.py:123 - _execute() - ::group::Pre task execution logs
+[2025-09-02T21:16:28.594+0800] INFO - taskinstance.py:2613 - are_dependencies_met() - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hahow_crawler_dag.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [queued]>
+[2025-09-02T21:16:28.631+0800] INFO - taskinstance.py:2613 - are_dependencies_met() - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hahow_crawler_dag.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [queued]>
+[2025-09-02T21:16:28.633+0800] INFO - taskinstance.py:2866 - _check_and_change_state_before_execution() - Starting attempt 1 of 2
+[2025-09-02T21:16:28.799+0800] INFO - taskinstance.py:2889 - _check_and_change_state_before_execution() - Executing <Task(PythonOperator): crawl_article_language> on 2025-08-31 18:00:00+00:00
+[2025-09-02T21:16:28.853+0800] INFO - standard_task_runner.py:72 - _start_by_fork() - Started process 363 to run task
+[2025-09-02T21:16:28.933+0800] INFO - standard_task_runner.py:104 - _start_by_fork() - Running: ['***', 'tasks', 'run', 'hahow_crawler_dag', 'crawl_article_language', 'scheduled__2025-08-31T18:00:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/hahow_crawler_dag.py', '--cfg-path', '/tmp/tmpb196byh1']
+[2025-09-02T21:16:29.001+0800] INFO - standard_task_runner.py:105 - _start_by_fork() - Job 19: Subtask crawl_article_language
+[2025-09-02T21:16:29.875+0800] INFO - task_command.py:467 - task_run() - Running <TaskInstance: hahow_crawler_dag.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [running]> on host a246a11defc8
+[2025-09-02T21:16:31.295+0800] INFO - taskinstance.py:3132 - _execute_task_with_callbacks() - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='hahow_crawler_dag' AIRFLOW_CTX_TASK_ID='crawl_article_language' AIRFLOW_CTX_EXECUTION_DATE='2025-08-31T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-31T18:00:00+00:00'
+[2025-09-02T21:16:31.303+0800] INFO - taskinstance.py:731 - _execute_callable() - ::endgroup::
+[2025-09-02T21:16:34.883+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:1, status_code:200
+[2025-09-02T21:16:38.109+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:2, status_code:200
+[2025-09-02T21:16:40.159+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:3, status_code:200
+[2025-09-02T21:16:41.949+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:4, status_code:200
+[2025-09-02T21:16:52.336+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:5, status_code:200
+[2025-09-02T21:16:53.160+0800] INFO - logging_mixin.py:190 - _propagate_log() - category: language, page:6, status_code:200
+[2025-09-02T21:16:53.389+0800] INFO - logging_mixin.py:190 - _propagate_log() - hahow_article_language.csv saved.
+[2025-09-02T21:16:53.403+0800] INFO - python.py:240 - execute() - Done. Returned value was: None
+[2025-09-02T21:16:53.522+0800] INFO - taskinstance.py:340 - _run_raw_task() - ::group::Post task execution logs
+[2025-09-02T21:16:53.524+0800] INFO - taskinstance.py:352 - _run_raw_task() - Marking task as SUCCESS. dag_id=hahow_crawler_dag, task_id=crawl_article_language, run_id=scheduled__2025-08-31T18:00:00+00:00, execution_date=20250831T180000, start_date=20250902T131628, end_date=20250902T131653
+[2025-09-02T21:16:53.811+0800] INFO - local_task_job_runner.py:266 - handle_task_exit() - Task exited with return code 0
+[2025-09-02T21:16:53.898+0800] INFO - taskinstance.py:3895 - _schedule_downstream_tasks() - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-02T21:16:53.911+0800] INFO - local_task_job_runner.py:245 - _execute() - ::endgroup::
+[2025-09-02T21:16:53.927+0800] INFO - standard_task_runner.py:217 - _read_task_utilization() - Process not found (most likely exited), stop collecting metrics

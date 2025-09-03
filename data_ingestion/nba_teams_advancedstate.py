@@ -125,7 +125,6 @@ def nba_teams_advancedstate(year:int):
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
-
     df = pd.DataFrame(teams)
     df['team'] = df['team'].str.replace('*', '', regex=False)
     df['team_cut'] = df["team"].str.split(' ')
@@ -133,6 +132,7 @@ def nba_teams_advancedstate(year:int):
     df.drop(columns=['team_cut'], inplace=True)
     df['attendance'] = df['attendance'].str.replace(',', '', regex=False)
     df['attendance_per_g'] = df['attendance_per_g'].str.replace(',', '', regex=False)
+    df.replace('', 0,  inplace=True)  # 將空字串補成 0，以利轉換資料型態
     df.index += 1
     fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig")

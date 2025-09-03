@@ -1,0 +1,1480 @@
+[2025-09-02T21:44:53.247+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2657) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:44:53.266+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:44:53.294+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:44:53.287+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:44:53.449+0800] INFO - processor.py:925 - process_file() - DAG(s) 'example_first_dag' retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:44:55.349+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:44:55.348+0800] INFO - dag.py:3239 - bulk_write_to_db() - Sync 1 DAGs
+[2025-09-02T21:44:55.847+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:44:55.847+0800] INFO - dag.py:4180 - calculate_dagrun_date_fields() - Setting next_dagrun for example_first_dag to 2025-09-02 13:00:00+00:00, run_after=2025-09-02 14:00:00+00:00
+[2025-09-02T21:44:56.022+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 2.843 seconds
+[2025-09-02T21:45:20.102+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2703) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:20.104+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:45:20.112+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:20.111+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:20.158+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:20.141+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 42, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 222, in __init__
+    super().__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 975, in __init__
+    task_group.add(self)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/task_group.py", line 256, in add
+    raise DuplicateTaskIdFound(f"{node_type} id '{key}' has already been added to the DAG")
+airflow.exceptions.DuplicateTaskIdFound: Task id 'task_1' has already been added to the DAG
+[2025-09-02T21:45:20.159+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:20.207+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.118 seconds
+[2025-09-02T21:45:23.159+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2708) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:23.161+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:45:23.166+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:23.165+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:23.199+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:23.196+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 42, in <module>
+    task_2 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 222, in __init__
+    super().__init__(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 975, in __init__
+    task_group.add(self)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/task_group.py", line 256, in add
+    raise DuplicateTaskIdFound(f"{node_type} id '{key}' has already been added to the DAG")
+airflow.exceptions.DuplicateTaskIdFound: Task id 'task_1' has already been added to the DAG
+[2025-09-02T21:45:23.200+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:23.244+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.112 seconds
+[2025-09-02T21:45:27.342+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2713) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:27.344+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:45:27.348+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:27.347+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:27.379+0800] INFO - processor.py:925 - process_file() - DAG(s) 'example_first_dag' retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:27.643+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:27.643+0800] INFO - dag.py:3239 - bulk_write_to_db() - Sync 1 DAGs
+[2025-09-02T21:45:27.695+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:27.695+0800] INFO - dag.py:4180 - calculate_dagrun_date_fields() - Setting next_dagrun for example_first_dag to 2025-09-02 13:00:00+00:00, run_after=2025-09-02 14:00:00+00:00
+[2025-09-02T21:45:27.746+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.423 seconds
+[2025-09-02T21:45:49.986+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2759) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:49.989+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:45:50.007+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:50.006+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:50.043+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:50.026+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 55
+    start_task >>>> end_task
+                 ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:45:50.044+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:50.157+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.235 seconds
+[2025-09-02T21:45:51.102+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2764) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:51.104+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:45:51.109+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:51.108+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:51.117+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:45:51.115+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 55
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:45:51.118+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:45:51.164+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.077 seconds
+[2025-09-02T21:46:12.665+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2810) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:12.671+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:12.675+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:12.675+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:12.681+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:12.680+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 57
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:12.682+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:12.717+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.070 seconds
+[2025-09-02T21:46:21.780+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2815) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:21.782+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:21.790+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:21.789+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:21.803+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:21.797+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 47
+    task_3 = PythonOperator(
+IndentationError: unexpected indent
+[2025-09-02T21:46:21.804+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:21.856+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.106 seconds
+[2025-09-02T21:46:26.929+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2820) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:26.931+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:26.941+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:26.940+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:26.952+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:26.950+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 47
+    task_3 = PythonOperator(
+                           ^
+SyntaxError: '(' was never closed
+[2025-09-02T21:46:26.953+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:26.994+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.088 seconds
+[2025-09-02T21:46:34.363+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2853) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:34.365+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:34.368+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:34.368+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:34.374+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:34.372+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 47
+    task_3 = PythonOperator(
+                           ^
+SyntaxError: '(' was never closed
+[2025-09-02T21:46:34.374+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:34.411+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.059 seconds
+[2025-09-02T21:46:37.453+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2869) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:37.457+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:37.464+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:37.463+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:37.478+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:37.471+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:37.480+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:37.536+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.110 seconds
+[2025-09-02T21:46:43.282+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2876) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:43.283+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:43.287+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:43.286+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:43.292+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:43.291+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:43.293+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:43.326+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.055 seconds
+[2025-09-02T21:46:48.378+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2881) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:48.381+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:48.387+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:48.386+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:48.405+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:48.400+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:48.406+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:48.458+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.113 seconds
+[2025-09-02T21:46:49.441+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2886) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:49.442+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:49.445+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:49.445+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:49.453+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:49.452+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:49.454+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:49.486+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.059 seconds
+[2025-09-02T21:46:53.587+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2891) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:53.588+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:53.593+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:53.592+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:53.598+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:53.597+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:53.598+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:53.634+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.058 seconds
+[2025-09-02T21:46:56.648+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2896) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:56.650+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:46:56.653+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:56.653+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:56.658+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:46:56.657+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:46:56.659+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:46:56.691+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.056 seconds
+[2025-09-02T21:47:00.798+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2906) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:00.804+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:00.807+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:00.807+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:00.814+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:00.813+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:00.816+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:00.855+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.070 seconds
+[2025-09-02T21:47:02.117+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2921) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:02.119+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:02.122+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:02.122+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:02.129+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:02.128+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:02.129+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:02.172+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.069 seconds
+[2025-09-02T21:47:31.652+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2957) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:31.654+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:31.659+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:31.658+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:31.670+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:31.667+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 39
+    python_callable=echo "Hello from Airflow! Success"',
+                                                      ^
+SyntaxError: unterminated string literal (detected at line 39)
+[2025-09-02T21:47:31.671+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:31.714+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.080 seconds
+[2025-09-02T21:47:41.811+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=2996) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:41.813+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:41.827+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:41.824+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:41.841+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:41.836+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:41.846+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:41.896+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.117 seconds
+[2025-09-02T21:47:45.995+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3003) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:46.000+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:46.006+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:46.005+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:46.016+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:46.015+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:46.017+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:46.056+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.072 seconds
+[2025-09-02T21:47:49.032+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3008) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:49.034+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:49.039+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:49.038+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:49.046+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:49.044+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:49.046+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:49.084+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.065 seconds
+[2025-09-02T21:47:59.110+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3013) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:59.111+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:47:59.114+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:59.114+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:59.121+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:47:59.119+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:47:59.122+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:47:59.169+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.072 seconds
+[2025-09-02T21:48:02.295+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3023) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:02.298+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:02.303+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:02.302+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:02.320+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:02.318+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:48:02.321+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:02.359+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.084 seconds
+[2025-09-02T21:48:05.561+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3038) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:05.562+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:05.566+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:05.566+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:05.573+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:05.571+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 59
+    start_task >>   >> end_task
+                    ^^
+SyntaxError: invalid syntax
+[2025-09-02T21:48:05.574+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:05.615+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.072 seconds
+[2025-09-02T21:48:19.810+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3069) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:19.812+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:19.817+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:19.816+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:19.848+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:19.845+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:19.849+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:19.899+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.116 seconds
+[2025-09-02T21:48:21.825+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3074) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:21.827+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:21.834+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:21.833+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:21.876+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:21.871+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:21.877+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:21.933+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.124 seconds
+[2025-09-02T21:48:22.837+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3079) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:22.838+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:22.842+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:22.842+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:22.866+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:22.863+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:22.867+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:22.903+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.082 seconds
+[2025-09-02T21:48:27.900+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3084) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:27.902+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:27.908+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:27.907+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:27.952+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:27.948+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:27.954+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:28.006+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.124 seconds
+[2025-09-02T21:48:30.057+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3089) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:30.064+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:30.080+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:30.072+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:30.143+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:30.139+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:30.144+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:30.209+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.178 seconds
+[2025-09-02T21:48:32.131+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3094) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:32.133+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:48:32.143+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:32.142+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:32.183+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:48:32.179+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:48:32.186+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:48:32.258+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.154 seconds
+[2025-09-02T21:49:01.233+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3140) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:01.235+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:49:01.238+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:49:01.238+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:01.262+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:49:01.259+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:49:01.262+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:01.295+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.074 seconds
+[2025-09-02T21:49:31.619+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3186) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:31.625+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:49:31.631+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:49:31.631+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:31.661+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:49:31.657+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:49:31.661+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:49:31.703+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.101 seconds
+[2025-09-02T21:50:02.131+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3232) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:02.133+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:50:02.137+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:50:02.137+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:02.169+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:50:02.166+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:50:02.170+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:02.220+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.107 seconds
+[2025-09-02T21:50:32.304+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3278) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:32.306+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:50:32.309+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:50:32.308+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:32.329+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:50:32.326+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:50:32.330+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:50:32.367+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.074 seconds
+[2025-09-02T21:51:02.419+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3324) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:02.422+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:51:02.429+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:51:02.429+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:02.456+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:51:02.453+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:51:02.457+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:02.507+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.105 seconds
+[2025-09-02T21:51:32.677+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3370) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:32.683+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:51:32.686+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:51:32.685+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:32.711+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:51:32.709+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:51:32.712+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:51:32.748+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.083 seconds
+[2025-09-02T21:52:03.372+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3416) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:03.374+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:52:03.377+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:52:03.377+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:03.396+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:52:03.394+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:52:03.397+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:03.436+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.074 seconds
+[2025-09-02T21:52:34.065+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3460) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:34.069+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:52:34.080+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:52:34.079+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:34.169+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:52:34.151+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:52:34.171+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:52:34.240+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.216 seconds
+[2025-09-02T21:53:04.314+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3482) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:04.316+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:53:04.321+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:53:04.320+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:04.349+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:53:04.347+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:53:04.350+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:04.408+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.111 seconds
+[2025-09-02T21:53:34.695+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3528) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:34.704+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:53:34.716+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:53:34.715+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:34.800+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:53:34.795+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:53:34.801+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:53:34.914+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.252 seconds
+[2025-09-02T21:54:05.763+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3574) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:05.766+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:54:05.771+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:54:05.770+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:05.811+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:54:05.807+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:54:05.813+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:05.879+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.144 seconds
+[2025-09-02T21:54:36.160+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3620) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:36.163+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:54:36.168+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:54:36.168+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:36.199+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:54:36.195+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:54:36.199+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:54:36.236+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.091 seconds
+[2025-09-02T21:55:06.954+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3675) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:06.957+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:55:06.970+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:55:06.969+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:07.051+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:55:07.040+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:55:07.053+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:07.139+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.222 seconds
+[2025-09-02T21:55:37.412+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3790) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:37.416+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:55:37.420+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:55:37.419+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:37.440+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:55:37.437+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:55:37.440+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:55:37.475+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.075 seconds
+[2025-09-02T21:56:07.842+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3836) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:07.845+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:56:07.850+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:56:07.850+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:07.901+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:56:07.896+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:56:07.902+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:07.953+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.126 seconds
+[2025-09-02T21:56:38.126+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3882) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:38.129+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:56:38.132+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:56:38.132+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:38.158+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:56:38.155+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:56:38.159+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:56:38.199+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.087 seconds
+[2025-09-02T21:57:08.532+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3928) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:08.533+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:57:08.537+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:57:08.536+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:08.557+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:57:08.555+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:57:08.558+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:08.596+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.075 seconds
+[2025-09-02T21:57:38.674+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=3974) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:38.680+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:57:38.684+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:57:38.684+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:38.706+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:57:38.703+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:57:38.706+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:57:38.742+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.082 seconds
+[2025-09-02T21:58:09.509+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4020) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:09.511+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:58:09.515+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:58:09.514+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:09.534+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:58:09.532+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:58:09.534+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:09.567+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.070 seconds
+[2025-09-02T21:58:39.657+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4066) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:39.663+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:58:39.666+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:58:39.666+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:39.697+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:58:39.693+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:58:39.697+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:58:39.735+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.089 seconds
+[2025-09-02T21:59:10.611+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4112) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:10.614+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:59:10.625+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:59:10.624+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:10.685+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:59:10.676+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:59:10.686+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:10.738+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.153 seconds
+[2025-09-02T21:59:41.453+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4158) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:41.460+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T21:59:41.466+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:59:41.465+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:41.507+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T21:59:41.502+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T21:59:41.511+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T21:59:41.553+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.121 seconds
+[2025-09-02T22:00:11.710+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4204) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:11.712+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:00:11.715+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:00:11.715+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:11.742+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:00:11.738+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:00:11.742+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:11.781+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.084 seconds
+[2025-09-02T22:00:42.024+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4250) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:42.027+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:00:42.031+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:00:42.030+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:42.053+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:00:42.051+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:00:42.054+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:00:42.088+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.076 seconds
+[2025-09-02T22:01:12.722+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4296) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:12.723+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:01:12.727+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:01:12.726+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:12.747+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:01:12.744+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:01:12.747+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:12.787+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.076 seconds
+[2025-09-02T22:01:43.547+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4341) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:43.549+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:01:43.553+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:01:43.553+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:43.575+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:01:43.573+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:01:43.575+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:01:43.610+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.077 seconds
+[2025-09-02T22:02:14.107+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4373) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:14.111+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:02:14.119+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:02:14.118+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:14.151+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:02:14.147+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:02:14.152+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:14.216+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.131 seconds
+[2025-09-02T22:02:44.366+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4408) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:44.370+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:02:44.381+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:02:44.380+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:44.418+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:02:44.415+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:02:44.419+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:02:44.464+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.120 seconds
+[2025-09-02T22:03:14.680+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4454) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:14.683+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:03:14.690+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:03:14.689+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:14.726+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:03:14.723+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:03:14.727+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:14.784+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.124 seconds
+[2025-09-02T22:03:45.527+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4500) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:45.529+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:03:45.534+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:03:45.533+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:45.574+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:03:45.566+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:03:45.575+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:03:45.631+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.123 seconds
+[2025-09-02T22:04:16.489+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4546) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:16.493+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:04:16.500+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:04:16.500+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:16.550+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:04:16.543+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:04:16.552+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:16.610+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.146 seconds
+[2025-09-02T22:04:47.170+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4592) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:47.176+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:04:47.181+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:04:47.181+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:47.212+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:04:47.209+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:04:47.212+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:04:47.255+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.105 seconds
+[2025-09-02T22:05:17.408+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4638) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:17.410+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:05:17.416+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:05:17.415+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:17.455+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:05:17.449+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:05:17.456+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:17.505+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.111 seconds
+[2025-09-02T22:05:48.111+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4684) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:48.117+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:05:48.122+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:05:48.122+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:48.147+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:05:48.144+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:05:48.148+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:05:48.192+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.097 seconds
+[2025-09-02T22:06:18.864+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4730) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:18.871+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:06:18.878+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:06:18.877+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:18.919+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:06:18.915+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:06:18.920+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:18.990+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.146 seconds
+[2025-09-02T22:06:49.562+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4776) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:49.565+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:06:49.570+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:06:49.570+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:49.604+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:06:49.600+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:06:49.605+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:06:49.651+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.107 seconds
+[2025-09-02T22:07:20.344+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4822) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:20.351+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:07:20.356+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:07:20.356+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:20.392+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:07:20.384+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:07:20.393+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:20.471+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.145 seconds
+[2025-09-02T22:07:50.786+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4868) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:50.794+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:07:50.808+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:07:50.807+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:50.919+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:07:50.913+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:07:50.932+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:07:51.058+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.340 seconds
+[2025-09-02T22:08:21.486+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4914) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:21.488+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:08:21.493+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:08:21.492+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:21.522+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:08:21.518+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:08:21.522+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:21.568+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.096 seconds
+[2025-09-02T22:08:51.843+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=4960) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:51.848+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:08:51.852+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:08:51.851+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:51.874+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:08:51.872+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:08:51.875+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:08:51.914+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.087 seconds
+[2025-09-02T22:09:24.364+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5004) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:24.369+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:09:24.374+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:09:24.374+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:24.424+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:09:24.415+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:09:24.429+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:24.525+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.185 seconds
+[2025-09-02T22:09:58.492+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5040) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:58.571+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:09:58.578+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:09:58.577+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:58.708+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:09:58.702+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:09:58.709+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:09:59.038+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.594 seconds
+[2025-09-02T22:10:29.192+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5073) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:29.195+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:10:29.206+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:10:29.205+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:29.266+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:10:29.261+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:10:29.267+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:29.343+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.184 seconds
+[2025-09-02T22:10:59.653+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5108) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:59.655+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:10:59.660+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:10:59.659+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:59.687+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:10:59.684+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:10:59.688+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:10:59.728+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.095 seconds
+[2025-09-02T22:11:30.514+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5154) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:11:30.517+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:11:30.529+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:11:30.528+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:11:30.575+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:11:30.571+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:11:30.576+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:11:30.630+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.138 seconds
+[2025-09-02T22:12:00.818+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5200) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:00.821+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:12:00.831+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:12:00.826+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:00.879+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:12:00.875+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:12:00.881+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:00.959+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.172 seconds
+[2025-09-02T22:12:31.222+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5246) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:31.226+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:12:31.241+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:12:31.240+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:31.314+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:12:31.310+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:12:31.315+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:12:31.395+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.209 seconds
+[2025-09-02T22:13:01.600+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5292) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:01.602+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:13:01.610+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:13:01.609+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:01.647+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:13:01.643+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:13:01.647+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:01.694+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.118 seconds
+[2025-09-02T22:13:32.393+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5338) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:32.399+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:13:32.405+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:13:32.405+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:32.433+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:13:32.430+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:13:32.435+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:13:32.489+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.107 seconds
+[2025-09-02T22:14:02.808+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5384) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:02.811+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:14:02.822+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:14:02.821+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:02.867+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:14:02.862+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:14:02.868+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:02.927+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.143 seconds
+[2025-09-02T22:14:33.690+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5430) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:33.696+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:14:33.702+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:14:33.701+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:33.731+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:14:33.728+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:14:33.732+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:14:33.763+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.090 seconds
+[2025-09-02T22:15:04.526+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5476) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:04.528+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:15:04.531+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:15:04.531+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:04.555+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:15:04.552+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:15:04.556+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:04.594+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.078 seconds
+[2025-09-02T22:15:34.880+0800] INFO - processor.py:186 - _handle_dag_file_processing() - Started process (PID=5522) to work on /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:34.893+0800] INFO - processor.py:914 - process_file() - Processing file /opt/airflow/dags/example_test_dag.py for tasks to queue
+[2025-09-02T22:15:34.905+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:15:34.903+0800] INFO - dagbag.py:588 - collect_dags() - Filling up the DagBag from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:35.047+0800] INFO - logging_mixin.py:190 - _propagate_log() - [2025-09-02T22:15:35.030+0800] ERROR - dagbag.py:387 - parse() - Failed to import: /opt/airflow/dags/example_test_dag.py
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/example_test_dag.py", line 37, in <module>
+    task_1 = PythonOperator(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 506, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 224, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2025-09-02T22:15:35.048+0800] WARNING - processor.py:927 - process_file() - No viable dags retrieved from /opt/airflow/dags/example_test_dag.py
+[2025-09-02T22:15:35.284+0800] INFO - processor.py:208 - _run_file_processor() - Processing /opt/airflow/dags/example_test_dag.py took 0.477 seconds
