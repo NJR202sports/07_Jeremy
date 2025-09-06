@@ -81,8 +81,8 @@ def nba_teams_advancedstate(year:int):
         opp_ft_rate = opp_ft_rate_cell.text.strip()
 
         arena_name = arena_name_cell.text.strip()
-        attendance = attendance_cell.text.strip()
-        attendance_per_g = attendance_per_g_cell.text.strip()
+        attendance = attendance_cell.text.strip() if attendance_cell.text.strip() != '' else None
+        attendance_per_g = attendance_per_g_cell.text.strip() if attendance_per_g_cell.text.strip() != '' else None
 
 
 
@@ -135,7 +135,7 @@ def nba_teams_advancedstate(year:int):
     df.drop(columns=['team_cut'], inplace=True)
     df['attendance'] = df['attendance'].str.replace(',', '', regex=False)
     df['attendance_per_g'] = df['attendance_per_g'].str.replace(',', '', regex=False)
-    df.replace('', 0,  inplace=True)  # 將空字串補成 0，以利轉換資料型態
+    
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")
@@ -148,7 +148,7 @@ def nba_teams_advancedstate(year:int):
 
 if __name__ == '__main__':
 
-    years = list(range(2021,2026))
+    years = list(range(2015,2026))
 
     for year in years:
 

@@ -59,32 +59,31 @@ def nba_players_state(year:int):
         age = age_cell.text.strip()
         team = team_cell.text.strip()
         pos = pos_cell.text.strip()
-        g = g_cell.text.strip()
-        gs = gs_cell.text.strip()
-        mp = mp_cell.text.strip()
-        fg = fg_cell.text.strip()
-        fga = fga_cell.text.strip()
-        fg_pct = fg_pct_cell.text.strip()
-        p3 = p3_cell.text.strip()
-        pa3 = pa3_cell.text.strip()
-        p3_pct = p3_pct_cell.text.strip()
-        p2 = p2_cell.text.strip()
-        pa2 = pa2_cell.text.strip()
-        p2_pct = p2_pct_cell.text.strip()
-        efg_pct = efg_pct_cell.text.strip()
-        e_fga_pct = e_fga_pct_cell.text.strip()
-        ft = ft_cell.text.strip()
-        fta = fta_cell.text.strip()
-        ft_pct = ft_pct_cell.text.strip()
-        orb = orb_cell.text.strip()
-        drb = drb_cell.text.strip()
-        trb = trb_cell.text.strip()
-        ast = ast_cell.text.strip()
-        stl = stl_cell.text.strip()
-        blk = blk_cell.text.strip()
-        tov = tov_cell.text.strip()
-        pf = pf_cell.text.strip()
-        pts = pts_cell.text.strip()
+        g = int(g_cell.text.strip()) if g_cell.text.strip() != '' else None
+        gs = int(gs_cell.text.strip()) if gs_cell.text.strip() != '' else None
+        mp = int(mp_cell.text.strip()) if mp_cell.text.strip() != '' else None
+        fg = int(fg_cell.text.strip()) if fg_cell.text.strip() != '' else None
+        fga = int(fga_cell.text.strip()) if fga_cell.text.strip() != '' else None
+        fg_pct = float(fg_pct_cell.text.strip()) if fg_pct_cell.text.strip() != '' else None
+        p3 = int(p3_cell.text.strip()) if p3_cell.text.strip() != '' else None
+        pa3 = int(pa3_cell.text.strip()) if pa3_cell.text.strip() != '' else None
+        p3_pct = float(p3_pct_cell.text.strip()) if p3_pct_cell.text.strip() != '' else None
+        p2 = int(p2_cell.text.strip()) if p2_cell.text.strip() != '' else None
+        pa2 = int(pa2_cell.text.strip())    if pa2_cell.text.strip() != '' else None
+        p2_pct = float(p2_pct_cell.text.strip()) if p2_pct_cell.text.strip() != '' else None
+        efg_pct = float(efg_pct_cell.text.strip()) if efg_pct_cell.text.strip() != '' else None
+        ft = int(ft_cell.text.strip()) if ft_cell.text.strip() != '' else None
+        fta = int(fta_cell.text.strip()) if fta_cell.text.strip() != '' else None
+        ft_pct =float(ft_pct_cell.text.strip()) if ft_pct_cell.text.strip() != '' else None
+        orb = int(orb_cell.text.strip()) if orb_cell.text.strip() != '' else None
+        drb = int(drb_cell.text.strip()) if drb_cell.text.strip() != '' else None
+        trb = int(trb_cell.text.strip()) if trb_cell.text.strip() != '' else None
+        ast = int(ast_cell.text.strip()) if ast_cell.text.strip() != '' else None
+        stl = int(stl_cell.text.strip()) if stl_cell.text.strip() != '' else None
+        blk = int(blk_cell.text.strip()) if blk_cell.text.strip() != '' else None
+        tov = int(tov_cell.text.strip()) if tov_cell.text.strip() != '' else None
+        pf = int(pf_cell.text.strip()) if pf_cell.text.strip() != '' else None
+        pts = int(pts_cell.text.strip()) if pts_cell.text.strip() != '' else None
 
 
 
@@ -108,7 +107,6 @@ def nba_players_state(year:int):
                 "2p_field_goals_attempts": pa2,
                 "2p_field_goals_percentage": p2_pct,
                 "efg_pct": efg_pct,
-                "e_fga_pct": e_fga_pct,
                 "free_throws": ft,
                 "free_throws_attempts": fta,
                 "free_throws_percentage": ft_pct,
@@ -131,35 +129,8 @@ def nba_players_state(year:int):
         os.mkdir(dirname)
 
     df = pd.DataFrame(players)
-    df.replace('', 0,  inplace=True)  # 將空字串補成 0，以利轉換資料型態
-    # df = df.astype({
-    #     'age': 'Int64',
-    #     'games': 'Int64',
-    #     'games_started': 'Int64',
-    #     'minutes_played': 'Int64',
-    #     'field_goals': 'Int64',
-    #     'field_goals_attempts': 'Int64',
-    #     'field_goals_percentage': 'float',
-    #     '3p_field_goals': 'Int64',
-    #     '3p_field_goals_attempts': 'Int64',
-    #     '3p_field_goals_percentage': 'float64',
-    #     '2p_field_goals': 'Int64',
-    #     '2p_field_goals_attempts': 'Int64',
-    #     '2p_field_goals_percentage': 'float',
-    #     'efg_pct': 'float',
-    #     'free_throws': 'Int64',
-    #     'free_throws_attempts': 'Int64',
-    #     'free_throws_percentage': 'float',
-    #     'offensive_rebounds': 'Int64',
-    #     'defensive_rebounds': 'Int64',
-    #     'total_rebounds': 'Int64',
-    #     'assists': 'Int64',
-    #     'steals': 'Int64',
-    #     'blocks': 'Int64',
-    #     'turnovers': 'Int64',
-    #     'personal_fouls': 'Int64',
-    #     'points': 'Int64'
-    #     })
+    df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
+    
 
     df.drop(df.index[-1], inplace=True) # 移除最後一列平均值
     df.index += 1
