@@ -125,12 +125,46 @@ def nba_players_state(year:int):
         
         # return players
 
-    dirname = "nba_players_state"
+    dirname = "nba_players_merge"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
     df = pd.DataFrame(players)
     df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
+    df['player'] = df['player'].str.replace('Nikola Jokić', 'Nikola Jokic', regex=False)
+    df['player'] = df['player'].str.replace('Nikola Jović', 'Nikola Jovic', regex=False)
+    
+    df['player'] = df['player'].str.replace('Nikola Vučević', 'Nikola Vucevic', regex=False)
+    df['player'] = df['player'].str.replace('Bojan Bogdanović', 'Bojan Bogdanovic', regex=False)
+    df['player'] = df['player'].str.replace('Luka Dončić', 'Luka Doncic', regex=False)
+    df['player'] = df['player'].str.replace('Alperen Şengün', 'Alperen Sengun', regex=False)
+    df['player'] = df['player'].str.replace('Goran Dragić', 'Goran Dragic', regex=False)
+    df['player'] = df['player'].str.replace('Tidjane Salaün', 'Tidjane Salaun', regex=False)
+    df['player'] = df['player'].str.replace('Dario Šarić', 'Dario Saric', regex=False)
+    
+    df['player'] = df['player'].str.replace('Anžejs Pasečņiks', 'Anzejs Pasecniks', regex=False)
+    df['player'] = df['player'].str.replace('Dāvis Bertāns', 'Davis Bertans', regex=False)
+    df['player'] = df['player'].str.replace('Jusuf Nurkić', 'Jusuf Nurkic', regex=False)
+    df['player'] = df['player'].str.replace('Čedomir Vitkovac', 'Cedomir Vitkovac', regex=False)
+    df['player'] = df['player'].str.replace('Žan Mark Šiško', 'Zan Mark Sisko', regex=False)
+    df['player'] = df['player'].str.replace('Žan Mark Sisko', 'Zan Mark Sisko', regex=False)
+    df['player'] = df['player'].str.replace('Šarūnas Vasilevičius', 'Sarunas Vasiljevicius', regex=False)
+    df['player'] = df['player'].str.replace('Šarūnas Jasikevičius', 'Sarunas Jasikevicius', regex=False)
+    df['player'] = df['player'].str.replace('Šarūnas Marčiulionis', 'Sarunas Marciulionis', regex=False)
+    df['player'] = df['player'].str.replace('Čedomir Vitkovac', 'Cedomir Vitkovac', regex=False)
+    df['player'] = df['player'].str.replace('Dāvis Bertāns', 'Davis Bertans', regex=False)
+    df['player'] = df['player'].str.replace('Olivier-Maxence Prosper', 'O. Prosper', regex=False)
+    df['player'] = df['player'].str.replace('Ante Žižić', 'Ante Zizic', regex=False)
+    df['player'] = df['player'].str.replace('Žan Mark Šiško', 'Zan Mark Sisko', regex=False)
+    df['player'] = df['player'].str.replace('Dario Šarić', 'Dario Saric', regex=False)  
+   
+    df['player'] = df['player'].str.replace('Čedomir Vitkovac', 'Cedomir Vitkovac', regex=False)
+    df['player'] = df['player'].str.replace('Dāvis Bertāns', 'Davis Bertans', regex=False)
+    df['player'] = df['player'].str.replace('Boban Marjanović', 'Boban Marjanovic', regex=False)
+
+
+
+
     df['team'] = df['team'].replace({"HOU": "Rockets",
                              "GSW": "Warriors",
                              "OKC": "Thunder",

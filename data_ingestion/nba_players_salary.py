@@ -112,6 +112,21 @@ def nba_players_salary(year):
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
     df['team'] = df['team'].str.capitalize()
+    df['player'] = df['player'].str.replace('Z. Risacher', 'Zaccharie Risacher', regex=False)
+    df['player'] = df['player'].str.replace('P. Patterson', 'Patrick Patterson', regex=False)
+    df['player'] = df['player'].str.replace('J. Poeltl', 'Jakob Poeltl', regex=False)
+    df['player'] = df['player'].str.replace('D. Bertāns', 'Dāvis Bertāns', regex=False)
+    df['player'] = df['player'].str.replace('D. Lillard', 'Damian Lillard', regex=False)
+    df['player'] = df['player'].str.replace('A. Wiggins', 'Andrew Wiggins', regex=False)
+    df['player'] = df['player'].str.replace('J. Valančiūnas', 'Jonas Valanciunas', regex=False)
+    df['player'] = df['player'].str.replace('T. Sefolosha', 'Thabo Sefolosha', regex=False)
+    df['player'] = df['player'].str.replace('C. Aldrich', 'Cole Aldrich', regex=False)
+    df['player'] = df['player'].str.replace('M. Žižić', 'Mario Zizic', regex=False)
+    df['player'] = df['player'].str.replace('D. Šarić', 'Dario Saric', regex=False)
+    df['player'] = df['player'].str.replace('M. Fultz', 'Markelle Fultz', regex=False)
+   
+
+
     # df.index += 1
     fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
     df.to_csv(fn, encoding="utf-8-sig", index=False)

@@ -7,9 +7,9 @@ import io
 from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_teams_salary_table
 
 def nba_teams_salary(year: int):
-    dirname = "nba_teams_salary"
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    # dirname = "nba_teams_merge"
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
 
     url = f'https://www.hoopshype.com/salaries/teams/?season={year}'
     response = requests.get(url)

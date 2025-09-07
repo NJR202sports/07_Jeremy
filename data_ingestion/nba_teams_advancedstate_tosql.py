@@ -122,9 +122,9 @@ def nba_teams_advancedstate(year:int):
                 })
             team_seen.add(team)
 
-    dirname = "nba_teams_advancedstate"
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    # dirname = "nba_teams_advancedstate"
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
 
 
     df = pd.DataFrame(teams)

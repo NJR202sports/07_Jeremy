@@ -109,9 +109,9 @@ def nba_teams_state(year:int):
             team_seen.add(team)
 
     
-    dirname = "nba_teams_state"
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    # dirname = "nba_teams_state"
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
 
     df = pd.DataFrame(teams)
     df['team'] = df['team'].str.replace('*', '', regex=False)

@@ -108,7 +108,7 @@ def nba_teams_state(year:int):
             team_seen.add(team)
 
     
-    dirname = "nba_teams_state"
+    dirname = "nba_teams_merge"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 

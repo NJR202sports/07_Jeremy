@@ -6,7 +6,7 @@ import os
 import io
 
 def nba_teams_salary(year: int):
-    dirname = "nba_teams_salary"
+    dirname = "nba_teams_merge"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
