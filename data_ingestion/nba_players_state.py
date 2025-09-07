@@ -132,24 +132,39 @@ def nba_players_state(year:int):
     df = pd.DataFrame(players)
     df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
     # 針對特殊字元進行替換
-    df['player'] = df['player'].str.replace('ć', 'c', regex=False)
-    df['player'] = df['player'].str.replace('Ş', 'S', regex=False)
-    df['player'] = df['player'].str.replace('ü', 'u', regex=False)
-    df['player'] = df['player'].str.replace('č', 'c', regex=False)
-    df['player'] = df['player'].str.replace('ž', 'z', regex=False)
-    df['player'] = df['player'].str.replace('š', 's', regex=False)
+    df['player'] = df['player'].str.replace('à', 'a', regex=False)
+    df['player'] = df['player'].str.replace('À', 'A', regex=False)
     df['player'] = df['player'].str.replace('á', 'a', regex=False)
+    df['player'] = df['player'].str.replace('Á', 'A', regex=False)
+    df['player'] = df['player'].str.replace('ä', 'a', regex=False)    
+    df['player'] = df['player'].str.replace('č', 'c', regex=False)
+    df['player'] = df['player'].str.replace('Č', 'C', regex=False)
+    df['player'] = df['player'].str.replace('ç', 'C', regex=False)
+    df['player'] = df['player'].str.replace('ć', 'c', regex=False)
+    df['player'] = df['player'].str.replace('Đ', 'D', regex=False)
+    df['player'] = df['player'].str.replace('đ', 'd', regex=False)
+    
     df['player'] = df['player'].str.replace('é', 'e', regex=False)
+    df['player'] = df['player'].str.replace('ë', 'e', regex=False)
+    df['player'] = df['player'].str.replace('è', 'e', regex=False)
+    df['player'] = df['player'].str.replace('É', 'E', regex=False)
+    df['player'] = df['player'].str.replace('Ê', 'E', regex=False)    
     df['player'] = df['player'].str.replace('í', 'i', regex=False)
-    df['player'] = df['player'].str.replace('ó', 'o', regex =False)
+    
+
+    df['player'] = df['player'].str.replace('ñ', 'n', regex=False)
+    df['player'] = df['player'].str.replace('ņ', 'n', regex=False)
+    df['player'] = df['player'].str.replace('Ş', 'S', regex=False)
+    df['player'] = df['player'].str.replace('š', 's', regex=False)
+    df['player'] = df['player'].str.replace('Š', 'S', regex=False)
+    df['player'] = df['player'].str.replace('ó', 'o', regex=False)
+    df['player'] = df['player'].str.replace('ö', 'o', regex=False)
     df['player'] = df['player'].str.replace('ú', 'u', regex=False)
-    df['player'] = df['player'].str.replace('ñ', 'n', regex =False)
-    df['player'] = df['player'].str.replace('ö', 'o', regex =False)
-    df['player'] = df['player'].str.replace('ä', 'a', regex =False)
-    df['player'] = df['player'].str.replace('ë', 'e', regex =False) 
-   
-
-
+    df['player'] = df['player'].str.replace('ü', 'u', regex=False)    
+    df['player'] = df['player'].str.replace('ý', 'y', regex=False)    
+        
+    df['player'] = df['player'].str.replace('ž', 'z', regex=False) 
+    df['player'] = df['player'].str.replace('Ž', 'Z', regex=False)
 
     df['team'] = df['team'].replace({"HOU": "Rockets",
                              "GSW": "Warriors",

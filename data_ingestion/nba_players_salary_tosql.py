@@ -11,7 +11,6 @@ import pandas as pd
 import os
 import time
 import random
-import lxml
 from data_ingestion.mysql import upload_data_to_mysql, upload_data_to_mysql_upsert, nba_players_salary_table
 
 def nba_players_salary(year):
@@ -128,6 +127,14 @@ def nba_players_salary(year):
     df['player'] = df['player'].str.replace('M. Fultz', 'Markelle Fultz', regex=False)
     df['player'] = df['player'].str.replace('O. Prosper', 'Olivier-Maxence Prosper', regex=False)
     df['player'] = df['player'].str.replace('S. Gilgeous-Alexander', 'Shai Gilgeous-Alexander', regex=False)
+    df['player'] = df['player'].str.replace('B. Bogdanovic', 'Bogdan Bogdanovic', regex=False)
+    df['player'] = df['player'].str.replace('F. Kaminsky', 'Frank Kaminsky', regex=False)
+    df['player'] = df['player'].str.replace('C. Felicio', 'Cristiano Felicio', regex=False)   
+    df['player'] = df['player'].str.replace('R. Jefferson', 'Richard Jefferson', regex=False)
+
+
+
+    
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")
