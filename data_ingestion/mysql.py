@@ -16,7 +16,7 @@ nba_players_salary_table = Table(
     "nba_players_salary",  # 資料表名稱
     metadata,
     Column("year", Integer, primary_key=True, comment="年度"),
-    Column("players", String(100), primary_key=True, comment="球員名稱"),
+    Column("player", String(100), primary_key=True, comment="球員名稱"),
     Column("team", String(50), nullable=False, comment="球隊名稱"),
     Column("salary", Integer, nullable=True, comment="薪水"),   
 )
@@ -126,7 +126,7 @@ nba_teams_advancedstate_table = Table(
 nba_teams_salary_table = Table(
     "nba_teams_salary",  # 資料表名稱
     metadata,
-    Column("years", Integer, primary_key=True, comment="年度"),
+    Column("year", Integer, primary_key=True, comment="年度"),
     Column("team", String(50), primary_key=True, comment="球隊名稱"),
     Column("total_salary", Integer, nullable=True, comment="球隊總薪資"),
 )

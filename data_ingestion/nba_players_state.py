@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 import pandas as pd
 import numpy as np
 
+
 def nba_players_state(year:int):
 
     url = f"https://www.basketball-reference.com/leagues/NBA_{year}_totals.html"
@@ -90,7 +91,7 @@ def nba_players_state(year:int):
         if name not in names_seen:
             players.append({
                 "year": year,
-                "name": name,
+                "player": name,
                 "team": team,
                 "age": age,
                 "pos": pos,
@@ -130,19 +131,54 @@ def nba_players_state(year:int):
 
     df = pd.DataFrame(players)
     df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
+    df['team'] = df['team'].replace({"HOU": "Rockets",
+                             "GSW": "Warriors",
+                             "OKC": "Thunder",
+                             "CLE": "Cavaliers",
+                             "POR": "Blazers",
+                             "NOP": "Pelicans",
+                             "LAC": "Clippers",
+                             "DAL": "Mavericks",
+                             "UTA": "Jazz",
+                             "CHI": "Bulls",
+                             "SAC": "Kings",
+                             "ORL": "Magic",
+                             "MEM": "Grizzlies",
+                             "WAS": "Wizards",
+                             "MIN": "Timberwolves",
+                             "PHO": "Suns",
+                             "MIA": "Heat",
+                             "2TM": "2Teams",
+                             "TOR": "Raptors",
+                             "BRK": "Nets",
+                             "ATL": "Hawks",
+                             "DEN": "Nuggets",
+                             "DET": "Pistons",
+                             "CHO": "Hornets",
+                             "BOS": "Celtics",
+                             "SAS": "Spurs",
+                             "MIL": "Bucks",
+                             "NYK": "Knicks",
+                             "PHI": "76ers",
+                             "IND": "Pacers",
+                             "LAL": "Lakers",
+                             "3TM": "3Teams"
+                            })
     
-
     df.drop(df.index[-1], inplace=True) # 移除最後一列平均值
-    df.index += 1
+    # df.index += 1
     fn = os.path.join(dirname, f"nba_players_state_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
-
+    df.to_csv(fn, encoding="utf-8-sig", index=False)
+    print(f"✅ {year}完成，處理 {len(df)} 筆記錄到{fn}")
+    
+       
     return df
+
 
 
 if __name__ == '__main__':
 
-    years = list(range(2021,2022))
+    years = list(range(2015,2026))
 
     for year in years:
 

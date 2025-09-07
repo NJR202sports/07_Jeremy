@@ -133,15 +133,15 @@ def nba_teams_advancedstate(year:int):
     df['attendance'] = df['attendance'].str.replace(',', '', regex=False)
     df['attendance_per_g'] = df['attendance_per_g'].str.replace(',', '', regex=False)
     
-    df.index += 1
+    # df.index += 1
     fn = os.path.join(dirname, f"nba_teams_advancedstate_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
-
+    df.to_csv(fn, encoding="utf-8-sig", index=False)
+    print(f"✅ {year}完成，處理 {len(df)} 筆記錄到{fn}")
     return df
 
 if __name__ == '__main__':
 
-    years = list(range(2025,2026))
+    years = list(range(2015,2026))
 
     for year in years:
 

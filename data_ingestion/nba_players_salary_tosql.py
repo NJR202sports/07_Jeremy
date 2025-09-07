@@ -64,7 +64,7 @@ def nba_players_salary(year):
         # 開啟網址並讀取html內容
         resp = req.urlopen(r)
         content = resp.read()
-        html = bs.BeautifulSoup(content)
+        html = bs.BeautifulSoup(content, 'html.parser')
 
 
         # players
@@ -93,7 +93,7 @@ def nba_players_salary(year):
             for i in range(len(player_list)):
                 all_rows.append({
                     'year': year,                    
-                    'players': player_list[i],
+                    'player': player_list[i],
                     'team': team_name,
                     'salary': salary_list[i]
                 })
@@ -104,14 +104,15 @@ def nba_players_salary(year):
         time.sleep(random.uniform(3, 5))  # 輕微延遲，避免封鎖
 
     # save
-    dirname = "nba_players_salary"
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    # dirname = "nba_players_salary"
+    # if not os.path.exists(dirname):
+    #     os.mkdir(dirname)
 
     df = pd.DataFrame(all_rows)
     df['team_cut'] = df["team"].str.split('-')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
+    df['team'] = df['team'].str.capitalize()
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")

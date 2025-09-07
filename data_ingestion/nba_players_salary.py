@@ -58,12 +58,12 @@ def nba_players_salary(year):
         # 取得網頁內容
         r = req.Request(url)
         r.add_header('user-agent',
-                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1')
+                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36')
 
         # 開啟網址並讀取html內容
         resp = req.urlopen(r)
         content = resp.read()
-        html = bs.BeautifulSoup(content)
+        html = bs.BeautifulSoup(content, 'html.parser')
 
 
         # players
@@ -92,7 +92,7 @@ def nba_players_salary(year):
             for i in range(len(player_list)):
                 all_rows.append({
                     'year': year,                    
-                    'players': player_list[i],
+                    'player': player_list[i],
                     'team': team_name,
                     'salary': salary_list[i]
                 })
@@ -111,10 +111,14 @@ def nba_players_salary(year):
     df['team_cut'] = df["team"].str.split('-')
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
-    df.index += 1
+    df['team'] = df['team'].str.capitalize()
+    # df.index += 1
     fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
-    df.to_csv(fn, encoding="utf-8-sig")
-    
+    df.to_csv(fn, encoding="utf-8-sig", index=False)
+    print(f"✅ {year}完成，處理 {len(df)} 筆記錄到{fn}")
+
+
+
     return df
 
 
@@ -122,7 +126,7 @@ def nba_players_salary(year):
 
 if __name__ == '__main__':
 
-    years = list(range(2025,2026))
+    years = list(range(2015,2026))
 
     for year in years:
 

@@ -131,6 +131,39 @@ def nba_players_state(year:int):
     df = pd.DataFrame(players)
     df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
     # df.replace('', ' ' , inplace=True)  # 將空字串補成 ，以利轉換資料型態
+    df['team'] = df['team'].replace({"HOU": "Rockets",
+                             "GSW": "Warriors",
+                             "OKC": "Thunder",
+                             "CLE": "Cavaliers",
+                             "POR": "Blazers",
+                             "NOP": "Pelicans",
+                             "LAC": "Clippers",
+                             "DAL": "Mavericks",
+                             "UTA": "Jazz",
+                             "CHI": "Bulls",
+                             "SAC": "Kings",
+                             "ORL": "Magic",
+                             "MEM": "Grizzlies",
+                             "WAS": "Wizards",
+                             "MIN": "Timberwolves",
+                             "PHO": "Suns",
+                             "MIA": "Heat",
+                             "2TM": "2Teams",
+                             "TOR": "Raptors",
+                             "BRK": "Nets",
+                             "ATL": "Hawks",
+                             "DEN": "Nuggets",
+                             "DET": "Pistons",
+                             "CHO": "Hornets",
+                             "BOS": "Celtics",
+                             "SAS": "Spurs",
+                             "MIL": "Bucks",
+                             "NYK": "Knicks",
+                             "PHI": "76ers",
+                             "IND": "Pacers",
+                             "LAL": "Lakers",
+                             "3TM": "3Teams"
+                            })
  
     df.drop(df.index[-1], inplace=True) # 移除最後一列平均值
     # df.index += 1
