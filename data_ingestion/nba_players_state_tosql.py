@@ -131,6 +131,24 @@ def nba_players_state(year:int):
     df = pd.DataFrame(players)
     df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
     # df.replace('', ' ' , inplace=True)  # 將空字串補成 ，以利轉換資料型態
+    # 針對特殊字元進行替換
+    df['player'] = df['player'].str.replace('ć', 'c', regex=False)
+    df['player'] = df['player'].str.replace('Ş', 'S', regex=False)
+    df['player'] = df['player'].str.replace('ü', 'u', regex=False)
+    df['player'] = df['player'].str.replace('č', 'c', regex=False)
+    df['player'] = df['player'].str.replace('ž', 'z', regex=False)
+    df['player'] = df['player'].str.replace('š', 's', regex=False)
+    df['player'] = df['player'].str.replace('á', 'a', regex=False)
+    df['player'] = df['player'].str.replace('é', 'e', regex=False)
+    df['player'] = df['player'].str.replace('í', 'i', regex=False)
+    df['player'] = df['player'].str.replace('ó', 'o', regex =False)
+    df['player'] = df['player'].str.replace('ú', 'u', regex=False)
+    df['player'] = df['player'].str.replace('ñ', 'n', regex =False)
+    df['player'] = df['player'].str.replace('ö', 'o', regex =False)
+    df['player'] = df['player'].str.replace('ä', 'a', regex =False)
+    df['player'] = df['player'].str.replace('ë', 'e', regex =False) 
+
+
     df['team'] = df['team'].replace({"HOU": "Rockets",
                              "GSW": "Warriors",
                              "OKC": "Thunder",

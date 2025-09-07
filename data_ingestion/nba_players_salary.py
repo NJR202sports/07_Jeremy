@@ -103,7 +103,7 @@ def nba_players_salary(year):
         time.sleep(random.uniform(1, 3))  # 輕微延遲，避免封鎖
 
     # save
-    dirname = "nba_players_salary"
+    dirname = "nba_players_merge"
     if not os.path.exists(dirname):
         os.mkdir(dirname)
 
@@ -124,7 +124,8 @@ def nba_players_salary(year):
     df['player'] = df['player'].str.replace('M. Žižić', 'Mario Zizic', regex=False)
     df['player'] = df['player'].str.replace('D. Šarić', 'Dario Saric', regex=False)
     df['player'] = df['player'].str.replace('M. Fultz', 'Markelle Fultz', regex=False)
-   
+    df['player'] = df['player'].str.replace('O. Prosper', 'Olivier-Maxence Prosper', regex=False)
+    df['player'] = df['player'].str.replace('S. Gilgeous-Alexander', 'Shai Gilgeous-Alexander', regex=False)
 
 
     # df.index += 1

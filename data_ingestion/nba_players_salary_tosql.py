@@ -113,10 +113,25 @@ def nba_players_salary(year):
     df['team'] = df['team_cut'].str[-1]
     df.drop(columns=['team_cut'], inplace=True)
     df['team'] = df['team'].str.capitalize()
+    
+    df['player'] = df['player'].str.replace('Z. Risacher', 'Zaccharie Risacher', regex=False)
+    df['player'] = df['player'].str.replace('P. Patterson', 'Patrick Patterson', regex=False)
+    df['player'] = df['player'].str.replace('J. Poeltl', 'Jakob Poeltl', regex=False)
+    df['player'] = df['player'].str.replace('D. Bertāns', 'Dāvis Bertāns', regex=False)
+    df['player'] = df['player'].str.replace('D. Lillard', 'Damian Lillard', regex=False)
+    df['player'] = df['player'].str.replace('A. Wiggins', 'Andrew Wiggins', regex=False)
+    df['player'] = df['player'].str.replace('J. Valančiūnas', 'Jonas Valanciunas', regex=False)
+    df['player'] = df['player'].str.replace('T. Sefolosha', 'Thabo Sefolosha', regex=False)
+    df['player'] = df['player'].str.replace('C. Aldrich', 'Cole Aldrich', regex=False)
+    df['player'] = df['player'].str.replace('M. Žižić', 'Mario Zizic', regex=False)
+    df['player'] = df['player'].str.replace('D. Šarić', 'Dario Saric', regex=False)
+    df['player'] = df['player'].str.replace('M. Fultz', 'Markelle Fultz', regex=False)
+    df['player'] = df['player'].str.replace('O. Prosper', 'Olivier-Maxence Prosper', regex=False)
+    df['player'] = df['player'].str.replace('S. Gilgeous-Alexander', 'Shai Gilgeous-Alexander', regex=False)
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
     # df.to_csv(fn, encoding="utf-8-sig")
-    
+
     data = df.to_dict(orient='records') # 將 DataFrame 轉換為字典列表
     upload_data_to_mysql_upsert(table_obj=nba_players_salary_table, data=data)
     print(f"nba_players_salary_{year} has been uploaded to mysql.")
@@ -128,7 +143,7 @@ def nba_players_salary(year):
 
 if __name__ == '__main__':
 
-    years = list(range(2021,2026))
+    years = list(range(2015,2026))
 
     for year in years:
 
