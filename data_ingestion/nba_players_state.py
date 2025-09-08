@@ -60,34 +60,31 @@ def nba_players_state(year:int):
         age = age_cell.text.strip()
         team = team_cell.text.strip()
         pos = pos_cell.text.strip()
-        g = int(g_cell.text.strip()) if g_cell.text.strip() != '' else None
-        gs = int(gs_cell.text.strip()) if gs_cell.text.strip() != '' else None
-        mp = int(mp_cell.text.strip()) if mp_cell.text.strip() != '' else None
-        fg = int(fg_cell.text.strip()) if fg_cell.text.strip() != '' else None
-        fga = int(fga_cell.text.strip()) if fga_cell.text.strip() != '' else None
-        fg_pct = float(fg_pct_cell.text.strip()) if fg_pct_cell.text.strip() != '' else None
-        p3 = int(p3_cell.text.strip()) if p3_cell.text.strip() != '' else None
-        pa3 = int(pa3_cell.text.strip()) if pa3_cell.text.strip() != '' else None
-        p3_pct = float(p3_pct_cell.text.strip()) if p3_pct_cell.text.strip() != '' else None
-        p2 = int(p2_cell.text.strip()) if p2_cell.text.strip() != '' else None
-        pa2 = int(pa2_cell.text.strip())    if pa2_cell.text.strip() != '' else None
-        p2_pct = float(p2_pct_cell.text.strip()) if p2_pct_cell.text.strip() != '' else None
-        efg_pct = float(efg_pct_cell.text.strip()) if efg_pct_cell.text.strip() != '' else None
-        ft = int(ft_cell.text.strip()) if ft_cell.text.strip() != '' else None
-        fta = int(fta_cell.text.strip()) if fta_cell.text.strip() != '' else None
-        ft_pct =float(ft_pct_cell.text.strip()) if ft_pct_cell.text.strip() != '' else None
-        orb = int(orb_cell.text.strip()) if orb_cell.text.strip() != '' else None
-        drb = int(drb_cell.text.strip()) if drb_cell.text.strip() != '' else None
-        trb = int(trb_cell.text.strip()) if trb_cell.text.strip() != '' else None
-        ast = int(ast_cell.text.strip()) if ast_cell.text.strip() != '' else None
-        stl = int(stl_cell.text.strip()) if stl_cell.text.strip() != '' else None
-        blk = int(blk_cell.text.strip()) if blk_cell.text.strip() != '' else None
-        tov = int(tov_cell.text.strip()) if tov_cell.text.strip() != '' else None
-        pf = int(pf_cell.text.strip()) if pf_cell.text.strip() != '' else None
-        pts = int(pts_cell.text.strip()) if pts_cell.text.strip() != '' else None
-
-
-
+        g = g_cell.text.strip()    
+        gs = gs_cell.text.strip()     
+        mp = mp_cell.text.strip()     
+        fg = fg_cell.text.strip()     
+        fga = fga_cell.text.strip()      
+        fg_pct = fg_pct_cell.text.strip()
+        p3 = p3_cell.text.strip()     
+        pa3 = pa3_cell.text.strip()      
+        p3_pct = p3_pct_cell.text.strip()       
+        p2 = p2_cell.text.strip()     
+        pa2 = pa2_cell.text.strip()         
+        p2_pct = p2_pct_cell.text.strip()        
+        efg_pct = efg_pct_cell.text.strip()
+        ft = ft_cell.text.strip()     
+        fta = fta_cell.text.strip()      
+        ft_pct =ft_pct_cell.text.strip()
+        orb = orb_cell.text.strip()      
+        drb = drb_cell.text.strip()      
+        trb = trb_cell.text.strip()      
+        ast = ast_cell.text.strip()      
+        stl = stl_cell.text.strip()      
+        blk = blk_cell.text.strip()      
+        tov = tov_cell.text.strip()      
+        pf = pf_cell.text.strip()     
+        pts = pts_cell.text.strip()         
         if name not in names_seen:
             players.append({
                 "year": year,
@@ -130,42 +127,53 @@ def nba_players_state(year:int):
         os.mkdir(dirname)
 
     df = pd.DataFrame(players)
-    df = df.replace({pd.NaT: None, np.nan: None}) #把NaN轉換回None
+    df = df.replace('', None) #把''轉換None
+    
     # 針對特殊字元進行替換
-    df['player'] = df['player'].str.replace('à', 'a', regex=False)
-    df['player'] = df['player'].str.replace('À', 'A', regex=False)
-    df['player'] = df['player'].str.replace('á', 'a', regex=False)
-    df['player'] = df['player'].str.replace('Á', 'A', regex=False)
-    df['player'] = df['player'].str.replace('ä', 'a', regex=False)    
-    df['player'] = df['player'].str.replace('č', 'c', regex=False)
-    df['player'] = df['player'].str.replace('Č', 'C', regex=False)
-    df['player'] = df['player'].str.replace('ç', 'C', regex=False)
-    df['player'] = df['player'].str.replace('ć', 'c', regex=False)
-    df['player'] = df['player'].str.replace('Đ', 'D', regex=False)
-    df['player'] = df['player'].str.replace('đ', 'd', regex=False)
-    
-    df['player'] = df['player'].str.replace('é', 'e', regex=False)
-    df['player'] = df['player'].str.replace('ë', 'e', regex=False)
-    df['player'] = df['player'].str.replace('è', 'e', regex=False)
-    df['player'] = df['player'].str.replace('É', 'E', regex=False)
-    df['player'] = df['player'].str.replace('Ê', 'E', regex=False)    
-    df['player'] = df['player'].str.replace('í', 'i', regex=False)
-    
+    df['player'] = df['player'].replace({"à":"a",
+                                "á":"a",
+                                "ä":"a",
+                                "č":"c",
+                                "ç":"c",
+                                "ć":"c",
+                                "Đ":"D",
+                                "đ":"d",
+                                'à':'a',
+                                'À':'A',
+                                'á':'a',
+                                'Á':'A',
+                                'ä':'a',
+                                'č':'c',
+                                'Č': 'C',
+                                'ç': 'C',
+                                'ć': 'c',
+                                'Đ': 'D',
+                                'đ': 'd',
+                                'é': 'e',
+                                'ë': 'e',
+                                'è': 'e',
+                                'É': 'E',
+                                'Ê': 'E',
+                                'í': 'i',
+                                'ñ': 'n',
+                                'ņ': 'n',
+                                'Ş': 'S',
+                                'š': 's',
+                                'Š': 'S',
+                                'ó': 'o',
+                                'ö': 'o',
+                                'ú': 'u',
+                                'ü': 'u',
+                                'ý': 'y',
+                                'ž': 'z',
+                                'Ž': 'Z',
+                                'ņ': 'n',
+                                'Ģ': 'G',   
+                                'ģ': 'g',
+                                'Ł': 'L',
 
-    df['player'] = df['player'].str.replace('ñ', 'n', regex=False)
-    df['player'] = df['player'].str.replace('ņ', 'n', regex=False)
-    df['player'] = df['player'].str.replace('Ş', 'S', regex=False)
-    df['player'] = df['player'].str.replace('š', 's', regex=False)
-    df['player'] = df['player'].str.replace('Š', 'S', regex=False)
-    df['player'] = df['player'].str.replace('ó', 'o', regex=False)
-    df['player'] = df['player'].str.replace('ö', 'o', regex=False)
-    df['player'] = df['player'].str.replace('ú', 'u', regex=False)
-    df['player'] = df['player'].str.replace('ü', 'u', regex=False)    
-    df['player'] = df['player'].str.replace('ý', 'y', regex=False)    
-        
-    df['player'] = df['player'].str.replace('ž', 'z', regex=False) 
-    df['player'] = df['player'].str.replace('Ž', 'Z', regex=False)
-
+                                })
+    # 縮寫隊名轉換
     df['team'] = df['team'].replace({"HOU": "Rockets",
                              "GSW": "Warriors",
                              "OKC": "Thunder",

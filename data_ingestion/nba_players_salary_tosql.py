@@ -113,27 +113,119 @@ def nba_players_salary(year):
     df.drop(columns=['team_cut'], inplace=True)
     df['team'] = df['team'].str.capitalize()
     
-    df['player'] = df['player'].str.replace('Z. Risacher', 'Zaccharie Risacher', regex=False)
-    df['player'] = df['player'].str.replace('P. Patterson', 'Patrick Patterson', regex=False)
-    df['player'] = df['player'].str.replace('J. Poeltl', 'Jakob Poeltl', regex=False)
-    df['player'] = df['player'].str.replace('D. Bertāns', 'Dāvis Bertāns', regex=False)
-    df['player'] = df['player'].str.replace('D. Lillard', 'Damian Lillard', regex=False)
-    df['player'] = df['player'].str.replace('A. Wiggins', 'Andrew Wiggins', regex=False)
-    df['player'] = df['player'].str.replace('J. Valančiūnas', 'Jonas Valanciunas', regex=False)
-    df['player'] = df['player'].str.replace('T. Sefolosha', 'Thabo Sefolosha', regex=False)
-    df['player'] = df['player'].str.replace('C. Aldrich', 'Cole Aldrich', regex=False)
-    df['player'] = df['player'].str.replace('M. Žižić', 'Mario Zizic', regex=False)
-    df['player'] = df['player'].str.replace('D. Šarić', 'Dario Saric', regex=False)
-    df['player'] = df['player'].str.replace('M. Fultz', 'Markelle Fultz', regex=False)
-    df['player'] = df['player'].str.replace('O. Prosper', 'Olivier-Maxence Prosper', regex=False)
-    df['player'] = df['player'].str.replace('S. Gilgeous-Alexander', 'Shai Gilgeous-Alexander', regex=False)
-    df['player'] = df['player'].str.replace('B. Bogdanovic', 'Bogdan Bogdanovic', regex=False)
-    df['player'] = df['player'].str.replace('F. Kaminsky', 'Frank Kaminsky', regex=False)
-    df['player'] = df['player'].str.replace('C. Felicio', 'Cristiano Felicio', regex=False)   
-    df['player'] = df['player'].str.replace('R. Jefferson', 'Richard Jefferson', regex=False)
+  # 轉換名字縮寫
+    df['player'] = df['player'].replace({'Z. Risacher': 'Zaccharie Risacher', 
+                                'P. Patterson': 'Patrick Patterson', 
+                                'J. Poeltl': 'Jakob Poeltl', 
+                                'D. Bertāns': 'Dāvis Bertāns', 
+                                'D. Lillard': 'Damian Lillard', 
+                                'A. Wiggins': 'Andrew Wiggins', 
+                                'J. Valančiūnas': 'Jonas Valanciunas', 
+                                'T. Sefolosha': 'Thabo Sefolosha', 
+                                'C. Aldrich': 'Cole Aldrich', 
+                                'M. Žižić': 'Mario Zizic', 
+                                'D. Šarić': 'Dario Saric', 
+                                'M. Fultz': 'Markelle Fultz', 
+                                'O. Prosper': 'Olivier-Maxence Prosper', 
+                                'S. Gilgeous-Alexander': 'Shai Gilgeous-Alexander', 
+                                'B. Bogdanovic': 'Bogdan Bogdanovic', 
+                                'F. Kaminsky': 'Frank Kaminsky', 
+                                'C. Felicio': 'Cristiano Felicio',    
+                                'R. Jefferson': 'Richard Jefferson', 
+                                'C. Villanueva': 'Charlie Villanueva', 
+                                'J. Lauvergne': 'Joffrey Lauvergne', 
+                                'M. Morris': 'Marcus Morris', 
+                                'K. Papanikolaou': 'Kostas Papanikolaou', 
+                                'R. Bullock': 'Reggie Bullock', 
+                                'S. Dinwiddie': 'Spencer Dinwiddie', 
+                                'A. Ajinca': 'Alexis Ajinca', 
+                                'M. World': 'Metta World Peace',
+                                'M. Speights': 'Marreese Speights', 
+                                'J. Michael': 'James Michael McAdoo', 
+                                'G. Robinson': 'Glenn Robinson III', 
+                                'S. Whittington': 'Shayne Whittington', 
+                                'G. Whittington': 'Greg Whittington', 
+                                'A. Stoudemire': 'Amar\'e Stoudemire', 
+                                'A. Cleveland': 'Alfonzo Cleveland', 
+                                'A. Schofield': 'Admiral Schofield', 
+                                'A. Pokusevski': 'Aleksej Pokusevski', 
+                                'A. Marciulionis': 'Aleksej Marciulionis',
+                                "B. Garrett": "Billy Garrett Jr.",
+                                "B. Mathurin": "Bennedict Mathurin",
+                                "B. Podziemski": "Brandin Podziemski",
+                                "B. Scheierman": "Baylor Scheierman",
+                                'C. Hutchison': 'Chandler Hutchison',
+                                'C. Brown': 'Christian Braun',
+                                "D. Finney-Smith": "Dorian Finney-Smith",
+                                "D. Jackson": "Damian Jones",
+                                "D. Jones": "Damian Jones",
+                                "D. Motiejunas": "Donatas Motiejunas",
+                                "D. Walton": "Derrick Walton Jr.",
+                                "D.J. Wilson": "D.J. Wilson",
+                                "D. Akoon-Purcell": "Darel Akoon-Purcell",
+                                "D. Melton": "De'Anthony Melton",
+                                'E. Mockevicius': 'Egidijus Mockevicius',
+                                'E.J. Liddell': 'E.J. Liddell',
+                                'F. Gillespie': 'Freddie Gillespie',
+                                'G. Yabusele': 'Guerschon Yabusele',
+                                'G. Antetokounmpo': 'Giannis Antetokounmpo',
+                                'G. Papagiannis': 'Georgios Papagiannis',
+                                'G. Kalaitzakis': 'George Kalaitzakis',
+                                'H. Highsmith': 'Haywood Highsmith',
+                                'I. Hartenstein': 'Isaiah Hartenstein',
+                                'I. Quickley': 'Immanuel Quickley',
+                                'I. Wainright': 'Ishmail Wainright',
+                                'I. Brockington': 'Izaiah Brockington',
+                                'J. O\'Bryant': 'Johnny O\'Bryant',
+                                'J. Valanciunas': 'Jonas Valanciunas',
+                                'J.J. Barea': 'Jose Juan Barea',
+                                'K. Collinsworth': 'Kyle Collinsworth',
+                                'K. Porzingis': 'Kristaps Porzingis',
+                                'K. Towns': 'Karl-Anthony Towns',
+                                'K. Caldwell-Pope': 'Kentavious Caldwell-Pope',
+                                'K. Antetokounmpo': 'Kostas Antetokounmpo',
+                                'L. Richard': 'Leo Richard',
+                                'L. Aldridge': 'LaMarcus Aldridge',
+                                'L. Galloway': 'Langston Galloway',
+                                'L. Jean-Charles': 'Livio Jean-Charles',
+                                'L. Wigginton': 'Lindell Wigginton',
+                                "M. Carter-Williams": "Michael Carter-Williams",
+                                "M. Dellavedova": "Matthew Dellavedova",
+                                "M. Kidd-Gilchrist": "Michael Kidd-Gilchrist",
+                                "M. Georges-Hunt": "Marcus Georges-Hunt",
+                                "M. Kuzminskas": "Mindaugas Kuzminskas",
+                                "M. Richardson": "Malachi Richardson",
+                                "M. Thornton": "Marcus Thornton",
+                                "M. Williams": "Mo Williams",
+                                "M. Bagley": "Marvin Bagley III",
+                                "M. Derrickson": "Marcus Derrickson",
+                                "N. Laprovittola": "Nicolas Laprovittola",
+                                "N. Alexander-Walker": "Nickeil Alexander-Walker",
+                                "N. Williams-Goss": "Nigel Williams-Goss",
+                                "N. Hayes-Davis": "Nate Hayes-Davis",
+                                'P. Baldwin': 'Patrick Baldwin Jr.',
+                                'Q. Weatherspoon': 'Quinndary Weatherspoon',
+                                "R. Westbrook": "Russell Westbrook",
+                                "R. Hollis-Jefferson": "Rondae Hollis-Jefferson",
+                                'S. Zimmerman': 'Stephen Zimmerman',
+                                'S. Harrison': 'Shaquille Harrison',
+                                'S. Thornwell': 'Sindarius Thornwell',
+                                'S. Pointer': 'Sharmarke Pointer',
+                                'S. Mamukelashvili': 'Sandro Mamukelashvili',
+                                'S. Mykhailiuk': 'Sviatoslav Mykhailiuk',
+                                'S. Fontecchio': 'Simone Fontecchio',
+                                'S. Pippen': 'Scotty Pippen Jr.',
+                                'T. Antetokounmpo': 'Thanasis Antetokounmpo', 
+                                'T. Luwawu-Cabarrot': 'Timothe Luwawu-Cabarrot', 
+                                'T. Ferguson': 'Terrance Ferguson', 
+                                'T. McKinney-Jones': 'Terrence McKinney-Jones', 
+                                'T. Horton-Tucker': 'Talen Horton-Tucker', 
+                                'T. Alexander': 'Ty-Shon Alexander', 
+                                'V. Wembanyama': 'Victor Wembanyama',
+                                'V. Williams': 'Vince Williams',
+                                'X. Rathan-Mayes': 'Xavier Rathan-Mayes'
 
-
-
+                                }) 
     
     # df.index += 1
     # fn = os.path.join(dirname, f"nba_players_salary_{year}.csv")
