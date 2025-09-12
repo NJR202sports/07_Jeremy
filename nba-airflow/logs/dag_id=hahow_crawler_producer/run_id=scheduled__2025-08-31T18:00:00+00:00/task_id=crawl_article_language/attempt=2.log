@@ -1,0 +1,195 @@
+[2025-09-02T21:17:58.151+0800] INFO - local_task_job_runner.py:123 - _execute() - ::group::Pre task execution logs
+[2025-09-02T21:17:58.250+0800] INFO - taskinstance.py:2613 - are_dependencies_met() - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hahow_crawler_producer.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [queued]>
+[2025-09-02T21:17:58.342+0800] INFO - taskinstance.py:2613 - are_dependencies_met() - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hahow_crawler_producer.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [queued]>
+[2025-09-02T21:17:58.345+0800] INFO - taskinstance.py:2866 - _check_and_change_state_before_execution() - Starting attempt 2 of 2
+[2025-09-02T21:17:58.448+0800] INFO - taskinstance.py:2889 - _check_and_change_state_before_execution() - Executing <Task(PythonOperator): crawl_article_language> on 2025-08-31 18:00:00+00:00
+[2025-09-02T21:17:58.532+0800] INFO - standard_task_runner.py:72 - _start_by_fork() - Started process 601 to run task
+[2025-09-02T21:17:58.598+0800] INFO - standard_task_runner.py:104 - _start_by_fork() - Running: ['***', 'tasks', 'run', 'hahow_crawler_producer', 'crawl_article_language', 'scheduled__2025-08-31T18:00:00+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/hahow_crawler_producer_dag.py', '--cfg-path', '/tmp/tmpd77w09sj']
+[2025-09-02T21:17:58.610+0800] INFO - standard_task_runner.py:105 - _start_by_fork() - Job 35: Subtask crawl_article_language
+[2025-09-02T21:17:59.486+0800] INFO - task_command.py:467 - task_run() - Running <TaskInstance: hahow_crawler_producer.crawl_article_language scheduled__2025-08-31T18:00:00+00:00 [running]> on host a246a11defc8
+[2025-09-02T21:18:00.250+0800] INFO - taskinstance.py:3132 - _execute_task_with_callbacks() - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data-team' AIRFLOW_CTX_DAG_ID='hahow_crawler_producer' AIRFLOW_CTX_TASK_ID='crawl_article_language' AIRFLOW_CTX_EXECUTION_DATE='2025-08-31T18:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-31T18:00:00+00:00'
+[2025-09-02T21:18:00.254+0800] INFO - taskinstance.py:731 - _execute_callable() - ::endgroup::
+[2025-09-02T21:18:06.783+0800] ERROR - taskinstance.py:3311 - fetch_handle_failure_context() - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 472, in _reraise_as_library_errors
+    yield
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 459, in _ensure_connection
+    return retry_over_time(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 934, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 860, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/usr/local/lib/python3.10/dist-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/usr/local/lib/python3.10/dist-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/usr/local/lib/python3.10/dist-packages/amqp/transport.py", line 175, in _connect
+    entries = socket.getaddrinfo(
+  File "/usr/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/hahow_crawler_producer_dag.py", line 25, in trigger_article_crawler
+    crawler_hahow_article.delay(category)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/base.py", line 799, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/amqp.py", line 518, in send_task_message
+    ret = producer.publish(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 186, in publish
+    return _publish(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 556, in _ensured
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 195, in _publish
+    channel = self.channel
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 218, in _get_channel
+    channel = self._channel = channel()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 234, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 953, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 458, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 476, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno -2] Name or service not known
+[2025-09-02T21:18:06.831+0800] INFO - taskinstance.py:1225 - _handle_failure() - Marking task as FAILED. dag_id=hahow_crawler_producer, task_id=crawl_article_language, run_id=scheduled__2025-08-31T18:00:00+00:00, execution_date=20250831T180000, start_date=20250902T131758, end_date=20250902T131806
+[2025-09-02T21:18:06.886+0800] INFO - taskinstance.py:340 - _run_raw_task() - ::group::Post task execution logs
+[2025-09-02T21:18:06.887+0800] ERROR - standard_task_runner.py:124 - _start_by_fork() - Failed to execute job 35 for task crawl_article_language ([Errno -2] Name or service not known; 601)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 472, in _reraise_as_library_errors
+    yield
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 459, in _ensure_connection
+    return retry_over_time(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 934, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 860, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/usr/local/lib/python3.10/dist-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/usr/local/lib/python3.10/dist-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/usr/local/lib/python3.10/dist-packages/amqp/transport.py", line 175, in _connect
+    entries = socket.getaddrinfo(
+  File "/usr/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 762, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.10/dist-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+  File "/opt/airflow/dags/hahow_crawler_producer_dag.py", line 25, in trigger_article_crawler
+    crawler_hahow_article.delay(category)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/base.py", line 799, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/usr/local/lib/python3.10/dist-packages/celery/app/amqp.py", line 518, in send_task_message
+    ret = producer.publish(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 186, in publish
+    return _publish(
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 556, in _ensured
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 195, in _publish
+    channel = self.channel
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 218, in _get_channel
+    channel = self._channel = channel()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/usr/local/lib/python3.10/dist-packages/kombu/messaging.py", line 234, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 953, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 458, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.10/dist-packages/kombu/connection.py", line 476, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno -2] Name or service not known
+[2025-09-02T21:18:06.948+0800] INFO - local_task_job_runner.py:266 - handle_task_exit() - Task exited with return code 1
+[2025-09-02T21:18:06.988+0800] INFO - local_task_job_runner.py:245 - _execute() - ::endgroup::
